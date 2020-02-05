@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: hashlite
+Version: 0.0.3
+Summary: light weight json db implemented using python dicts
+Home-page: https://github.com/samvarankashyap/hashlite
+Author: samvaran kashyap rallabandi
+Author-email: samvaran.kashyap@gmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
