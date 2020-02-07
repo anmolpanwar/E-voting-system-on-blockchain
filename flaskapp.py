@@ -9,13 +9,13 @@ def func():
 @app.route('/home', methods = ['POST'])
 def func2():
     choice = request.form['candidate']
-    v1 = evote.vote(choice)
+    v1 = evote.vote(int(choice))
     print (evote.Blockchain.votepool)
     return redirect('/thanks')
 
-@app.route('/thanks')
+@app.route('/thanks', methods = ['GET'])
 def thank():
-    return "Dhanyavaad!"
+    return render_template('home.html')
 
 if __name__=='__main__':
     app.run()

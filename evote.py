@@ -1,14 +1,18 @@
 from hashlib import *
+from cryptography.hazmat.primitives.asymmetric import *
 from time import time
 
-difficulty = 4
+difficulty = 3
 
 class vote:
+
+    count = 0
 
     def __init__(self,candidateID):
         self.candidate = candidateID
         self.time = time()
-        self.voteobject = {'Candidate_Name':self.candidate,'Time':self.time}
+        self.voteobject = {'Candidate ID':self.candidate,'Time':self.time}
+        vote.count+=1
         Blockchain.votepool.append(self.voteobject)
 
 
