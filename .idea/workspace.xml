@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/evote.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+            <state relative-caret-position="76">
+              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -288,13 +288,13 @@
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13511905" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="1" sideWeight="0.5011905" side_tool="true" visible="true" weight="0.3197279" />
+      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5011905" side_tool="true" visible="true" weight="0.3197279" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Python Console" order="3" />
       <window_info anchor="bottom" id="Educational.CheckDetails" order="4" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
-      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.49880952" visible="true" weight="0.3197279" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" sideWeight="0.49880952" visible="true" weight="0.3197279" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.39941692" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
@@ -314,7 +314,8 @@
     <MESSAGE value="pycharm unix epoch commit" />
     <MESSAGE value="pycharm unix epoch commit1" />
     <MESSAGE value="pycharm 2nd instance commit1" />
-    <option name="LAST_COMMIT_MESSAGE" value="pycharm 2nd instance commit1" />
+    <MESSAGE value="pycharm 2nd instance commit4" />
+    <option name="LAST_COMMIT_MESSAGE" value="pycharm 2nd instance commit4" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto/__init__.py">
@@ -383,8 +384,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/evote.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        <state relative-caret-position="76">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
