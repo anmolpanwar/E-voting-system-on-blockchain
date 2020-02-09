@@ -1,5 +1,6 @@
 from flask import *
 import evote
+import csv
 app = Flask(__name__)
 
 @app.route('/')
@@ -10,7 +11,11 @@ def func():
 def func2():
     choice = request.form['candidate']
     v1 = evote.vote(int(choice))
-    print (evote.Blockchain.votepool)
+    with open('votefile.csv','a',newline="") as votefile:
+        writer = csv.writer(votefile)
+        for key,value in v1.voteobject.items():
+            writer.writerow([key,value])
+    votefile.close()
     return redirect('/thanks')
 
 @app.route('/thanks', methods = ['GET'])

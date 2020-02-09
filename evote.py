@@ -11,7 +11,7 @@ class vote:
     def __init__(self,candidateID):
         self.candidate = candidateID
         self.time = time()
-        self.voteobject = {'Candidate ID':self.candidate,'Time':self.time}
+        self.voteobject = {self.candidate:self.time}
         vote.count+=1
         Blockchain.votepool.append(self.voteobject)
 
@@ -79,4 +79,3 @@ if __name__=='__main__':
     EVoting = Blockchain()
     EVoting.addGenesis()
     EVoting.display()
-    print (EVoting.votepool)
