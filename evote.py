@@ -3,7 +3,7 @@ from cryptography.hazmat.primitives.asymmetric import *
 import cryptography
 from time import time
 
-difficulty = 5
+difficulty = 2
 
 class vote:
 
@@ -77,4 +77,3 @@ if __name__=='__main__':
 
     EVoting = Blockchain()
     EVoting.addGenesis()
-    EVoting.display()
