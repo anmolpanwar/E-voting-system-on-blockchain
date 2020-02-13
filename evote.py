@@ -1,15 +1,19 @@
 from hashlib import *
+from cryptography.hazmat.primitives.asymmetric import *
+import cryptography
 from time import time
 
-difficulty = 4
+difficulty = 5
 
 class vote:
+
+    count = 0
 
     def __init__(self,candidateID):
         self.candidate = candidateID
         self.time = time()
-        self.voteobject = {'Candidate_Name':self.candidate,'Time':self.time}
-        Blockchain.votepool.append(self.voteobject)
+        vote.count+=1
+        Blockchain.votepool.append(self.__dict__)
 
 
 class Blockchain:
@@ -38,7 +42,6 @@ class Blockchain:
             print("Time stamp: ", block.timeStamp)
             print("Previous hash: ", block.prevHash)
             print("Nonce: ", block.nonce)
-            print("Block Hash: ", block.hash)
 
 
 class Block:
@@ -50,14 +53,14 @@ class Block:
         self.difficulty = difficulty
         self.timeStamp = timeStamp             #time()
         self.prevHash = prevHash               #Blockchain.chain[len(Blockchain.chain)-1].hash
-        self.nonce,self.hash = self.pow()      # proof of work function will find nonce and hash will be found automatically. Return both values.
+        self.nonce = self.pow()                # proof of work function will find nonce and hash will be found automatically. Return both values.
 
 
     def pow(self,zero=difficulty):
         self.nonce=0
         while(self.calcHash()[:zero]!='0'*zero):
             self.nonce+=1
-        return self.nonce, self.calcHash()
+        return self.nonce
 
     def calcHash(self):
         return sha256((str(str(self.data)+str(self.nonce)+str(self.timeStamp)+self.prevHash)).encode('utf-8')).hexdigest()
@@ -75,4 +78,3 @@ if __name__=='__main__':
     EVoting = Blockchain()
     EVoting.addGenesis()
     EVoting.display()
-    print (EVoting.votepool)
