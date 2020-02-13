@@ -11,9 +11,10 @@ def func():
 def func2():
     choice = request.form['candidate']
     v1 = evote.vote(int(choice))
+    print(evote.Blockchain.votepool)
     with open('votefile.csv','a',newline="") as votefile:
         writer = csv.writer(votefile)
-        for key,value in v1.voteobject.items():
+        for key,value in v1.__dict__.items():
             writer.writerow([key,value])
     votefile.close()
     return redirect('/thanks')
