@@ -1,17 +1,15 @@
-def abc():
-    return 2
+from time import time
+class vote:
 
-class ab:
-    chain = [2,4,4]
+    count = 0
 
-    @classmethod
-    def __init__(cls):
-        cls.length = len(ab.chain)
+    def __init__(self,candidateID):
+        self.candidate = candidateID
+        self.time = time()
+        vote.count+=1
+    # def abs(self):
+    #     pass
 
-    def ff(self):
-        return len(ab.chain)+1
-
-ab()
-print (ab.length)
-ab1 = ab()
-print (ab1.ff())
+v1 = vote(2)
+v2 = vote(8)
+print (vote.__dict__)

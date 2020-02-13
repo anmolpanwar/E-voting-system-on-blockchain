@@ -77,3 +77,4 @@ if __name__=='__main__':
 
     EVoting = Blockchain()
     EVoting.addGenesis()
+    EVoting.display()
