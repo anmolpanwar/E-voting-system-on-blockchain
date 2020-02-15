@@ -1,15 +1,10 @@
-from time import time
-class vote:
+from os import chmod
+from Crypto.PublicKey import RSA
 
-    count = 0
-
-    def __init__(self,candidateID):
-        self.candidate = candidateID
-        self.time = time()
-        vote.count+=1
-    # def abs(self):
-    #     pass
-
-v1 = vote(2)
-v2 = vote(8)
-print (vote.__dict__)
+key = RSA.generate(2048)
+with open("/tmp/private.key", 'wb') as content_file:
+    chmod("/tmp/private.key", 384)
+    content_file.write(key.exportKey('PEM'))
+pubkey = key.publickey()
+with open("/tmp/public.key", 'wb') as content_file:
+    content_file.write(pubkey.exportKey('OpenSSH'))
