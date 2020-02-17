@@ -4,6 +4,7 @@ zeros = 2
 #pycharm app
 class transaction:
     transcount=0
+
     def __init__(self,fromadd,toadd,amount):
         self.fromadd=fromadd
         self.toadd=toadd
@@ -21,6 +22,7 @@ class transaction:
 
 class Block:
     blockindex = 1
+
     def __init__(self,ts,data,prevhash='0'):
         self.index=Block.blockindex
         Block.blockindex+=1
@@ -30,7 +32,6 @@ class Block:
         self.prevhash=Blockchain.chain[len(Blockchain.chain)-1].hash
         self.hash=self.pow()
         Blockchain.chain.append(self)
-
 
     def calcHash(self):
         return sha256((str(str(self.data)+str(self.nonce)+str(self.ts)+self.prevhash)).encode('utf-8')).hexdigest()
@@ -54,6 +55,7 @@ class Block:
 class Blockchain:
     pendingtrans=[]
     chain = []
+
     def __init__(self):
         pass
 
