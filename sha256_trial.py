@@ -7,7 +7,7 @@ mh = sha256(str(msg).encode('utf-8')).hexdigest()
 
 while(mh[:2]!='00'):
     nonce+=1
-    msg = str("time.strftime('%d/%m/%Y - %H:%M:%S')data in 3rd block"+str(nonce)+"6767"+'00e5bb668b5a847807464f0ed374076e8882b70b962878216834e6c6f93dfdd1')
+    msg = str("time.strftime('%d/%m/%Y - %H:%M:%S')data in 3rd block"+str(nonce)+"6767"+'8b5a847807464f0ed374076e8882b70b962878216834e6c6f93dfdd1')
     mh = sha256(str(msg).encode('utf-8')).hexdigest()
     print (nonce)
 

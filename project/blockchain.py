@@ -33,7 +33,6 @@ class Blockchain:
         Blockchain.chain.append(self.genesis())
 
     def display(self):
-
         for block in self.chain:
             print("Block Height: ", block.height)
             print("Data in block: ", block.data)
@@ -70,7 +69,6 @@ class Block:
 
     def loadvote(self):
         pass
-
 
 
 if __name__=='__main__':
