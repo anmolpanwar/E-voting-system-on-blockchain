@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm 2nd instance commit87">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/project/.idea/project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/blockchain.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/blockchain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/flaskapp.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/flaskapp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/votefile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/project/votefile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/first.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,8 +67,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/blockchain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="91" column="13" lean-forward="true" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="13" />
+            <state relative-caret-position="527">
+              <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -133,8 +125,8 @@
         <option value="$PROJECT_DIR$/venv/signtest.py" />
         <option value="$PROJECT_DIR$/sha256_trial.py" />
         <option value="$PROJECT_DIR$/project/block.py" />
-        <option value="$PROJECT_DIR$/project/blockchain.py" />
         <option value="$PROJECT_DIR$/project/flaskapp.py" />
+        <option value="$PROJECT_DIR$/project/blockchain.py" />
       </list>
     </option>
   </component>
@@ -305,6 +297,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13511905" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -517,8 +510,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project/blockchain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="91" column="13" lean-forward="true" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="13" />
+        <state relative-caret-position="527">
+          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
