@@ -10,6 +10,7 @@ def func():
 @app.route('/home', methods = ['POST'])
 def func2():
     choice = request.form['candidate']
+
     v1 = blockchain.vote(int(choice))
     with open('votefile.csv','a',newline="") as votefile:
         writer = csv.writer(votefile)

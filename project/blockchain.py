@@ -18,6 +18,9 @@ class vote:
         vote.count+=1
         self.voteobject = {self.candidate:self.time}
 
+    def signvote(self):
+        pass
+
 
 class Blockchain:
 
@@ -65,8 +68,6 @@ class Block:
     def calcHash(self):
         return sha256((str(str(self.data)+str(self.nonce)+str(self.timeStamp)+self.prevHash)).encode('utf-8')).hexdigest()
 
-    def signvote(self):
-        pass
 
     @staticmethod
     def loadvote():
@@ -82,7 +83,7 @@ class Block:
             pass
 
         finally:
-            print("done")
+            print("data loaded in block")
 
 
 if __name__ == '__main__':
