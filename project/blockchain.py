@@ -1,5 +1,5 @@
 from hashlib import *
-from cryptography.hazmat.primitives.asymmetric import *
+# from cryptography.hazmat.primitives.asymmetric import *
 import cryptography
 from time import time
 from block import Block
@@ -47,8 +47,8 @@ class Blockchain:
 
 class Block:
 
-    def __init__(self,height,data,merkleRoot,difficulty,timeStamp,prevHash):
-        self.height = height                   #len(Blockchain.chain-1)
+    def __init__(self,height1,data,merkleRoot,difficulty,timeStamp,prevHash):
+        self.height = height1                   #len(Blockchain.chain-1)
         self.data = self.loadvote()                 #loadvote()
         self.merkleRoot = merkleRoot           #calculateMerkleRoot()
         self.difficulty = difficulty           #cryptography difficulty
