@@ -19,7 +19,7 @@ def func2():
     if b1.vote.count%4==0:
         block1 = b1.Block()
         blockx = block1.mineblock()
-        with open('blockchain.txt','ab') as blockfile:
+        with open('blockchain.abc','ab') as blockfile:
             pickle._dump(blockx,blockfile)
         print("block added")
     return redirect('/thanks')

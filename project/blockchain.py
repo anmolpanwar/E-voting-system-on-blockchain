@@ -117,7 +117,23 @@ if __name__ == '__main__':
     app.run(port = 5002)
     # data = EVoting.display()
     # print(data)
-    with open('blockchain.txt','rb') as blockfile:
+    with open('blockchain.abc','rb') as blockfile:
         data = pickle._load(blockfile)
-    print(data)
+        data2 = pickle._load(blockfile)
+    print("Block Height: ", data.height)
+    print("Data in block: ", data.data)
+    print("Merkle root: ", data.merkle)
+    print("Difficulty: ", data.difficulty)
+    print("Time stamp: ", data.timeStamp)
+    print("Previous hash: ", data.prevHash)
+    print("Nonce: ", data.nonce)
+
+    print("Block Height: ", data2.height)
+    print("Data in block: ", data2.data)
+    print("Merkle root: ", data2.merkle)
+    print("Difficulty: ", data2.difficulty)
+    print("Time stamp: ", data2.timeStamp)
+    print("Previous hash: ", data2.prevHash)
+    print("Nonce: ", data2.nonce)
+
 

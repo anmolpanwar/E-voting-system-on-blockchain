@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm 2nd instance commit87">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evote.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskapp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskapp2.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/blockchain.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/blockchain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/blockchain.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/flaskapp.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/flaskapp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sha256_trial.py" beforeDir="false" afterPath="$PROJECT_DIR$/sha256_trial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temporary.py" beforeDir="false" afterPath="$PROJECT_DIR$/temporary.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto/__init__.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +18,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tempppppp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
+            <state relative-caret-position="15">
               <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
             </state>
           </provider>
@@ -43,20 +35,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/block.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+            <state relative-caret-position="150">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/blockchain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+            <state relative-caret-position="1403">
+              <caret line="61" column="41" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -67,8 +59,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/flaskapp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" column="23" lean-forward="true" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+            <state relative-caret-position="184">
+              <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,13 +95,13 @@
         <option value="$PROJECT_DIR$/experiment.py" />
         <option value="$PROJECT_DIR$/venv/signtest.py" />
         <option value="$PROJECT_DIR$/sha256_trial.py" />
-        <option value="$PROJECT_DIR$/project/block.py" />
         <option value="$PROJECT_DIR$/project/dicttostring.py" />
         <option value="$PROJECT_DIR$/project/Genesis.py" />
         <option value="$PROJECT_DIR$/tempppppp.py" />
         <option value="$PROJECT_DIR$/temp2222.py" />
         <option value="$PROJECT_DIR$/project/flaskapp.py" />
         <option value="$PROJECT_DIR$/project/blockchain.py" />
+        <option value="$PROJECT_DIR$/project/block.py" />
       </list>
     </option>
   </component>
@@ -151,7 +146,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.blockchain">
+  <component name="RunManager" selected="Python.block">
+    <configuration name="block" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="python practice" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/block.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="blockchain" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="python practice" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -186,27 +202,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/flaskapp.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pub_key_crypto" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="python practice" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pub_key_crypto.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -259,11 +254,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.block" />
         <item itemvalue="Python.blockchain" />
         <item itemvalue="Python.temp2222" />
         <item itemvalue="Python.tempppppp" />
         <item itemvalue="Python.flaskapp" />
-        <item itemvalue="Python.pub_key_crypto" />
       </list>
     </recent_temporary>
   </component>
@@ -283,7 +278,7 @@
       <window_info anchor="bottom" id="Educational.CheckDetails" order="4" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
-      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.4952381" weight="0.3313897" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" sideWeight="0.4952381" visible="true" weight="0.3313897" />
       <window_info anchor="bottom" id="Debug" order="8" sideWeight="0.49821427" weight="0.39941692" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
@@ -422,9 +417,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/dicttostring.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/project/dicttostring.py" />
     <entry file="file://$PROJECT_DIR$/venv/signtest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -432,33 +425,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/flaskapp2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/block.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/temp2222.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tempppppp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -504,20 +474,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/flaskapp.py">
+    <entry file="file://$PROJECT_DIR$/tempppppp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="23" lean-forward="true" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="15">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/flaskapp2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project/blockchain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        <state relative-caret-position="1403">
+          <caret line="61" column="41" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/flaskapp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/block.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
