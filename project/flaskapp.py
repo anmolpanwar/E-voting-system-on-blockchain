@@ -1,6 +1,7 @@
 from flask import *
-import blockchain
+import blockchain as b1
 import csv
+import pickle
 app = Flask(__name__)
 
 @app.route('/')
@@ -10,12 +11,17 @@ def func():
 @app.route('/home', methods = ['POST'])
 def func2():
     choice = request.form['candidate']
-
-    v1 = blockchain.vote(int(choice))
+    v1 = b1.vote(int(choice))
     with open('votefile.csv','a',newline="") as votefile:
         writer = csv.writer(votefile)
         for key,value in v1.voteobject.items():
             writer.writerow([key,value])
+    if b1.vote.count%4==0:
+        block1 = b1.Block()
+        blockx = block1.mineblock()
+        with open('blockchain.txt','ab') as blockfile:
+            pickle._dump(blockx,blockfile)
+        print("block added")
     return redirect('/thanks')
 
 @app.route('/thanks', methods = ['GET'])
@@ -23,5 +29,5 @@ def thank():
     return render_template('home.html')
 
 if __name__=='__main__':
-    app.run()
+    app.run(port = 5002)
 

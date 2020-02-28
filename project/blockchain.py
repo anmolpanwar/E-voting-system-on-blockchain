@@ -5,6 +5,7 @@ from time import time
 from block import Block
 from flaskapp import *
 import csv
+import pickle
 
 difficulty = 2
 
@@ -31,42 +32,49 @@ class Blockchain:
         cls.length=len(cls.chain)
 
     def genesis(self):
-        gen = Block(0,"Let the real democracy rule!!", sha256(str("Let the real democracy rule!!").encode('utf-8')).hexdigest(), difficulty, time(),'')
+        gen = Block(0,"Let the real democracy rule!!", sha256(str("Let the real democracy rule!!").encode('utf-8')).hexdigest(), difficulty, time(),'',pow=0)
         return gen
 
     def addGenesis(self):
-        Blockchain.chain.append(self.genesis())
+        genesis1 = self.genesis()
+        genesis1.nonce = genesis1.pow()
+        Blockchain.chain.append(genesis1)
 
     def display(self):
-        for block in self.chain:
-            print("Block Height: ", block.height)
-            print("Data in block: ", block.data)
-            print("Merkle root: ", block.merkleRoot)
-            print("Difficulty: ", block.difficulty)
-            print("Time stamp: ", block.timeStamp)
-            print("Previous hash: ", block.prevHash)
-            print("Nonce: ", block.nonce)
+        # for block in self.chain:
+        #     print("Block Height: ", block.height)
+        #     print("Data in block: ", block.data)
+        #     print("Merkle root: ", block.merkle)
+        #     print("Difficulty: ", block.difficulty)
+        #     print("Time stamp: ", block.timeStamp)
+        #     print("Previous hash: ", block.prevHash)
+        #     print("Nonce: ", block.nonce)
+        #     print("\t\t\t|\n|\n|\n")
+        with open('blockchain.txt','rb') as blockfile:
+            data = pickle._load(blockfile)
+
+        return data
 
 
 class Block:
 
-    def __init__(self,height1,data,merkleRoot,difficulty,timeStamp,prevHash):
-        self.height = height1                   #len(Blockchain.chain-1)
-        self.data = self.loadvote()                 #loadvote()
-        self.merkleRoot = merkleRoot           #calculateMerkleRoot()
-        self.difficulty = difficulty           #cryptography difficulty
-        self.timeStamp = time()                #time()
-        self.prevHash = prevHash               #Blockchain.chain[len(Blockchain.chain)-1].hash
-        self.nonce = self.pow()                #proof of work function will find nonce and hash will be found automatically. Return both values.
+    def __init__(self,height = 0,data = 'WARNING = SOME ERROR OCCURED',merkle = '0',difficulty = 0,time = 0,prevHash = '0',pow=0):
+        self.height = height               #len(Blockchain.chain-1)
+        self.data = data                         #loadvote()
+        self.merkle = merkle                 #calculateMerkleRoot()
+        self.difficulty = difficulty                        #cryptography difficulty
+        self.timeStamp = time                             #time()
+        self.prevHash = prevHash
+        self.nonce = pow                            #proof of work function will find nonce.
 
-    def pow(self,zero=difficulty):             #proof-of-work method
+    def pow(self,zero=difficulty):                          #proof-of-work method
         self.nonce=0
         while(self.calcHash()[:zero]!='0'*zero):
             self.nonce+=1
         return self.nonce
 
     def calcHash(self):
-        return sha256((str(str(self.data)+str(self.nonce)+str(self.timeStamp)+self.prevHash)).encode('utf-8')).hexdigest()
+        return sha256((str(str(self.data)+str(self.nonce)+str(self.timeStamp)+str(self.prevHash))).encode('utf-8')).hexdigest()
 
 
     @staticmethod
@@ -86,10 +94,30 @@ class Block:
             print("data loaded in block")
 
 
+    def merkleRoot(self):
+        return 'congrats'
+
+    def mineblock(self):
+        self.height = len(Blockchain.chain)                #len(Blockchain.chain-1)
+        self.data = self.loadvote()                         #loadvote()
+        self.merkle = self.merkleRoot()                #calculateMerkleRoot()
+        self.difficulty = difficulty
+        self.timeStamp = time()                             #time()
+        #self.prevHash = Blockchain.chain[-1].calchash()
+        self.nonce = self.pow()
+
+        return self
+
+
+EVoting = Blockchain()
+EVoting.addGenesis()
+
 if __name__ == '__main__':
 
-    EVoting = Blockchain()
-    EVoting.addGenesis()
-    EVoting.display()
-    app.run()
-    print (Block.loadvote())
+    app.run(port = 5002)
+    # data = EVoting.display()
+    # print(data)
+    with open('blockchain.txt','rb') as blockfile:
+        data = pickle._load(blockfile)
+    print(data)
+
