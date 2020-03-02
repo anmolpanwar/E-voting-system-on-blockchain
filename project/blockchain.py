@@ -128,12 +128,12 @@ if __name__ == '__main__':
     print("Previous hash: ", data.prevHash)
     print("Nonce: ", data.nonce)
 
-    print("Block Height: ", data2.height)
-    print("Data in block: ", data2.data)
-    print("Merkle root: ", data2.merkle)
-    print("Difficulty: ", data2.difficulty)
-    print("Time stamp: ", data2.timeStamp)
-    print("Previous hash: ", data2.prevHash)
-    print("Nonce: ", data2.nonce)
+#     print("Block Height: ", data2.height)
+#     print("Data in block: ", data2.data)
+#     print("Merkle root: ", data2.merkle)
+#     print("Difficulty: ", data2.difficulty)
+#     print("Time stamp: ", data2.timeStamp)
+#     print("Previous hash: ", data2.prevHash)
+#     print("Nonce: ", data2.nonce)
 
 
