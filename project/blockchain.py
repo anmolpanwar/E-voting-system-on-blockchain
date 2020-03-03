@@ -114,7 +114,7 @@ EVoting.addGenesis()
 
 if __name__ == '__main__':
 
-    app.run(port = 5002)
+    app.run(port = 5000)
     # data = EVoting.display()
     # print(data)
     with open('blockchain.abc','rb') as blockfile:
