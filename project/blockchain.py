@@ -67,7 +67,7 @@ class Block:
         self.prevHash = prevHash
         self.nonce = pow                            #proof of work function will find nonce.
 
-    def pow(self,zero=difficulty):                          #proof-of-work method
+    def pow(self,zero=difficulty):                        
         self.nonce=0
         while(self.calcHash()[:zero]!='0'*zero):
             self.nonce+=1
