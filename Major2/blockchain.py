@@ -18,8 +18,7 @@ class vote:
         vote.count+=1
         self.voteobject = {self.candidate:self.time}
 
-    def signvote(self):
-        pass
+
 
 class Blockchain:
 
