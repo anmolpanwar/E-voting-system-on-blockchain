@@ -147,7 +147,6 @@ def func2():
     return redirect('/thanks')
 
 @app.route('/thanks', methods = ['GET'])
-
 def thank():
     return render_template('home.html')
 
