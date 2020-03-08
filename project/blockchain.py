@@ -2,8 +2,7 @@ from hashlib import *
 # from cryptography.hazmat.primitives.asymmetric import *
 import cryptography
 from time import time
-from block import Block
-from flaskapp import *
+from flask import *
 import csv
 import pickle
 
@@ -103,12 +102,38 @@ class Block:
         self.merkle = self.merkleRoot()                #calculateMerkleRoot()
         self.difficulty = difficulty
         self.timeStamp = time()                             #time()
-        #self.prevHash = Blockchain.chain[-1].calchash()
+        self.prevHash = Blockchain.chain[-1].calcHash()
         self.nonce = self.pow()
+        Blockchain.chain.append(self)
 
         return self
 
+app = Flask(__name__)
 
+@app.route('/')
+def func():
+    return render_template('first.html')
+
+@app.route('/home', methods = ['POST'])
+def func2():
+    choice = request.form['candidate']
+    v1 = vote(int(choice))
+
+    with open('votefile.csv','a',newline="") as votefile:
+        writer = csv.writer(votefile)
+        for key,value in v1.voteobject.items():
+            writer.writerow([key,value])
+
+    if vote.count%4==0:
+        blockx = Block().mineblock()
+        with open('blockchain.txt','ab') as blockfile:
+            pickle._dump(blockx,blockfile)
+        print("block added")
+    return redirect('/thanks')
+
+@app.route('/thanks', methods = ['GET'])
+def thank():
+    return render_template('home.html')
 EVoting = Blockchain()
 EVoting.addGenesis()
 
@@ -117,23 +142,17 @@ if __name__ == '__main__':
     app.run(port = 5000)
     # data = EVoting.display()
     # print(data)
-    with open('blockchain.abc','rb') as blockfile:
-        data = pickle._load(blockfile)
-        data2 = pickle._load(blockfile)
-    print("Block Height: ", data.height)
-    print("Data in block: ", data.data)
-    print("Merkle root: ", data.merkle)
-    print("Difficulty: ", data.difficulty)
-    print("Time stamp: ", data.timeStamp)
-    print("Previous hash: ", data.prevHash)
-    print("Nonce: ", data.nonce)
 
-    print("Block Height: ", data2.height)
-    print("Data in block: ", data2.data)
-    print("Merkle root: ", data2.merkle)
-    print("Difficulty: ", data2.difficulty)
-    print("Time stamp: ", data2.timeStamp)
-    print("Previous hash: ", data2.prevHash)
-    print("Nonce: ", data2.nonce)
+    with open('blockchain.txt','rb') as blockfile:
+        for i in range(len(EVoting.chain)-1):
+            data = pickle._load(blockfile)
+
+            print("Block Height: ", data.height)
+            print("Data in block: ", data.data)
+            print("Merkle root: ", data.merkle)
+            print("Difficulty: ", data.difficulty)
+            print("Time stamp: ", data.timeStamp)
+            print("Previous hash: ", data.prevHash)
+            print("Nonce: ", data.nonce)
 
 
