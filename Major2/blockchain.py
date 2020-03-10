@@ -38,13 +38,13 @@ class Blockchain:
         genesisblock.nonce = genesisblock.pow()
         genesisblock.hash = genesisblock.calcHash()
         Blockchain.chain.append(genesisblock)
-        with open('Blockchain.txt', 'ab') as genfile:
+        with open('temp/Blockchain.dat', 'ab') as genfile:
             pickle._dump(genesisblock, genfile)
         print("Genesis block added")
 
     @staticmethod
     def display():
-        with open('blockchain.txt','rb') as blockfile:
+        with open('temp/blockchain.dat','rb') as blockfile:
             for i in range(len(EVoting.chain)):
                 data = pickle._load(blockfile)
 
@@ -59,7 +59,7 @@ class Blockchain:
 
     @staticmethod
     def update_votepool():
-        votefile = open('votefile.csv','w+')
+        votefile = open('temp/votefile.csv','w+')
         votefile.close()
         return "Done"
 
@@ -90,7 +90,7 @@ class Block:
     def loadvote():
         votelist = []
         try:
-            with open('votefile.csv', mode = 'r') as votepool:
+            with open('temp/votefile.csv', mode = 'r') as votepool:
                 csvreader = csv.reader(votepool)
                 for row in csvreader:
                     votelist.append({'CandidateID':row[0], 'Time':row[1]})
@@ -123,37 +123,58 @@ class Block:
 
         return self
 
+#########################################################################
+
+#------------------------------FLASK APP--------------------------------#
+
 app = Flask(__name__)
 
 @app.route('/')
-def func():
-    return render_template('first.html')
+def home():
+    return render_template('home.html')
 
-@app.route('/home', methods = ['POST'])
-def func2():
+voterlist = []
+
+@app.route('/signup', methods = ['POST'])
+def votersignup():
+    voterid = request.form['voterid']
+    pin = request.form['pin']
+    if voterid not in voterlist:
+        voterlist.append(voterid)
+        name = str(voterid)+str(sha256(str(voterid).encode('utf-8')).hexdigest())
+        with open('temp/VoterID_Database.txt', 'a',newline = '') as voterdata:
+            voterdata.write(name)
+        return render_template('vote.html')
+    else:
+        return render_template('oops.html')
+
+
+@app.route('/vote', methods = ['POST'])
+def voter():
     choice = request.form['candidate']
     v1 = vote(int(choice))
 
-    with open('votefile.csv','a',newline="") as votefile:
+    with open('temp/votefile.csv','a',newline="") as votefile:
         writer = csv.writer(votefile)
         for key,value in v1.voteobject.items():
             writer.writerow([key,value])
 
     if vote.count%4==0:
         blockx = Block().mineblock()
-        with open('blockchain.txt','ab') as blockfile:
+        with open('temp/blockchain.dat','ab') as blockfile:
             pickle._dump(blockx,blockfile)
         print("block added")
     return redirect('/thanks')
 
 @app.route('/thanks', methods = ['GET'])
-
 def thank():
-    return render_template('home.html')
+    return render_template('thanks.html')
 
 
 EVoting = Blockchain()
 EVoting.addGenesis()
+f = open('temp/VoterID_Database.txt', 'w+')
+f.close()
 
 if __name__ == '__main__':
 
