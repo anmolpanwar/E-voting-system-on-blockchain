@@ -34,3 +34,15 @@ def sign(privatekey,data):
 #Function verify takes two arguments, public key and digital signature in base64 and returns a boolean True if signature matches the data, False if not matches data.
 def verify(publickey,data,sign):
      return publickey.verify(data,(int(base64.b64decode(sign)),))
+<<<<<<< HEAD
+=======
+
+
+
+privkey,pubkey = rsakeys()
+text = b'anmol'
+# cipher = encrypt(pubkey,text)
+# print(cipher)
+# print(decrypt(privkey,cipher))
+print()
+>>>>>>> 3e255861dc258d06efe01161a996cde5b9d4ac74

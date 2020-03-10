@@ -2,6 +2,10 @@ from hashlib import *
 # from cryptography.hazmat.primitives.asymmetric import *
 import cryptography
 from time import time
+<<<<<<< HEAD
+=======
+from block import Block
+>>>>>>> 3e255861dc258d06efe01161a996cde5b9d4ac74
 from flask import *
 import csv
 import pickle
@@ -66,7 +70,7 @@ class Block:
         self.prevHash = prevHash
         self.nonce = pow                            #proof of work function will find nonce.
 
-    def pow(self,zero=difficulty):                          #proof-of-work method
+    def pow(self,zero=difficulty):                        
         self.nonce=0
         while(self.calcHash()[:zero]!='0'*zero):
             self.nonce+=1
@@ -142,6 +146,7 @@ if __name__ == '__main__':
     app.run(port = 5000)
     # data = EVoting.display()
     # print(data)
+<<<<<<< HEAD
 
     with open('blockchain.txt','rb') as blockfile:
         for i in range(len(EVoting.chain)-1):
@@ -156,3 +161,25 @@ if __name__ == '__main__':
             print("Nonce: ", data.nonce)
 
 
+=======
+    with open('blockchain.txt','rb') as blockfile:
+        data = pickle._load(blockfile)
+        data2 = pickle._load(blockfile)
+
+    print("Block Height: ", data.height)
+    print("Data in block: ", data.data)
+    print("Merkle root: ", data.merkle)
+    print("Difficulty: ", data.difficulty)
+    print("Time stamp: ", data.timeStamp)
+    print("Previous hash: ", data.prevHash)
+    print("Nonce: ", data.nonce)
+
+    print("Block Height: ", data2.height)
+    print("Data in block: ", data2.data)
+    print("Merkle root: ", data2.merkle)
+    print("Difficulty: ", data2.difficulty)
+    print("Time stamp: ", data2.timeStamp)
+    print("Previous hash: ", data2.prevHash)
+    print("Nonce: ", data2.nonce)
+    print(EVoting.chain)
+>>>>>>> 3e255861dc258d06efe01161a996cde5b9d4ac74
