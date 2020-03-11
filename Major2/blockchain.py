@@ -5,7 +5,7 @@ from time import time
 from flask import *
 import csv
 import pickle
-import enc
+import enc as enc
 
 difficulty = 2
 
@@ -134,11 +134,16 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
+# @app.route('/signup', methods = ['POST'])
+# def hello():
+#     return render_template('hello.html')
+
 voterlist = []
 invisiblevoter = '' # global variable used to hide voter's identity
 
 @app.route('/signup', methods = ['POST'])
 def votersignup():
+
     voterid = request.form['voterid']
     pin = request.form['pin']
     global invisiblevoter
@@ -164,9 +169,13 @@ def votersignup():
 def voter():
     choice = request.form['candidate']
     v1 = vote(invisiblevoter, int(choice))
-    with open('temp/votefile.csv','a',newline="") as votefile:
-        writer = csv.writer(votefile)
-        writer.writerow(v1.votedata)
+    priv,pub = enc.rsakeys()
+    signed = enc.sign(priv,bytes(v1.votedata))
+    encrypted =
+
+    # with open('temp/votefile.csv','a',newline="") as votefile:
+    #     writer = csv.writer(votefile)
+    #     writer.writerow(v1.votedata)
 
 #---Current frequency to add and mine new blocks is after generation of every 4 votes
     if vote.count%4==0:

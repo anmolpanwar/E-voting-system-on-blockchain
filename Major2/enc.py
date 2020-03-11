@@ -37,11 +37,12 @@ def verify(publickey,data,sign):
 
 
 if __name__=='__main__':
-     privkey,pubkey = rsakeys()
-     rl = [1,2,3,4]
-     text = bytes(rl)
-     print (text)
-     cipher = sign(privkey,text)
-     print(cipher)
-     # print(decrypt(privkey,cipher))
+     rpriv,rpub = rsakeys()
+     spriv,spub = rsakeys()
+
+     rl = [1]
+     signed = sign(spriv,bytes(rl))
+     encrypted = encrypt(rpub,signed)
+     signed1 = decrypt(rpriv,encrypted)
+     print(verify(spub,bytes(rl),signed1))
 
