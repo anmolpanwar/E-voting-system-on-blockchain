@@ -113,12 +113,12 @@ class Block:
 
 
     def mineblock(self):
-        self.height = len(Blockchain.chain)                #len(Blockchain.chain-1)
+        self.height = len(Blockchain.chain)                 #len(Blockchain.chain-1)
         self.data = self.loadvote()                         #loadvote()
-        self.merkle = self.merkleRoot()                #calculateMerkleRoot()
-        self.difficulty = difficulty
+        self.merkle = self.merkleRoot()                     #calculateMerkleRoot()
+        self.difficulty = difficulty                        # DIFFICULTY for the cryptographic puzzle
         self.timeStamp = time()                             #time()
-        self.prevHash = Blockchain.chain[-1].calcHash()
+        self.prevHash = Blockchain.chain[-1].calcHash()     #Calculate the hash of previous
         self.nonce = self.pow()
         self.hash = self.calcHash()
         Blockchain.chain.append(self)
@@ -136,20 +136,27 @@ def home():
     return render_template('home.html')
 
 voterlist = []
-invisiblevoter = ''
+invisiblevoter = '' # global variable used to hide voter's identity
 
 @app.route('/signup', methods = ['POST'])
 def votersignup():
     voterid = request.form['voterid']
     pin = request.form['pin']
     global invisiblevoter
+
+#####-------ZERO KNOWLEDGE PROOF-------########
     invisiblevoter = str(sha256((str(voterid)+str(pin)).encode('utf-8')).hexdigest())
+
+#--Voter re-signup check
     if voterid not in voterlist:
         voterlist.append(voterid)
+
+#--If condition satisfied, voter can be allowed to vote and his data will be written on the database
         with open('temp/VoterID_Database.txt', 'a') as voterdata:
             voterdata.write(str(sha256(str(voterid).encode('utf-8')).hexdigest()))
             voterdata.write("\n")
         return render_template('vote.html')
+
     else:
         return render_template('oops.html')
 
@@ -162,6 +169,7 @@ def voter():
         writer = csv.writer(votefile)
         writer.writerow(v1.votedata)
 
+#---Current frequency to add and mine new blocks is after generation of every 4 votes
     if vote.count%4==0:
         blockx = Block().mineblock()
         with open('temp/blockchain.dat','ab') as blockfile:
@@ -174,8 +182,11 @@ def thank():
     return render_template('thanks.html')
 
 
+#--Blockchain initialized and Genesis block added
 EVoting = Blockchain()
 EVoting.addGenesis()
+
+#--Created a file for voter database storage
 f = open('temp/VoterID_Database.txt', 'w+')
 f.close()
 
