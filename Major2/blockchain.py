@@ -5,6 +5,7 @@ from time import time
 from flask import *
 import csv
 import pickle
+import enc
 
 difficulty = 2
 
@@ -12,11 +13,12 @@ class vote:
 
     count = 0
 
-    def __init__(self,candidateID):
+    def __init__(self,hiddenvoterid,candidateID):
+        self.hiddenvoterid = hiddenvoterid
         self.candidate = candidateID
         self.time = time()
         vote.count+=1
-        self.voteobject = {self.candidate:self.time}
+        self.votedata = [self.hiddenvoterid, self.candidate, self.time]
 
     def signvote(self):
         pass
@@ -93,7 +95,7 @@ class Block:
             with open('temp/votefile.csv', mode = 'r') as votepool:
                 csvreader = csv.reader(votepool)
                 for row in csvreader:
-                    votelist.append({'CandidateID':row[0], 'Time':row[1]})
+                    votelist.append({'VoterID':row[0],'CandidateID':row[1], 'Time':row[2]})
             return votelist
 
         except(IOError,IndexError):
@@ -134,16 +136,19 @@ def home():
     return render_template('home.html')
 
 voterlist = []
+invisiblevoter = ''
 
 @app.route('/signup', methods = ['POST'])
 def votersignup():
     voterid = request.form['voterid']
     pin = request.form['pin']
+    global invisiblevoter
+    invisiblevoter = str(sha256((str(voterid)+str(pin)).encode('utf-8')).hexdigest())
     if voterid not in voterlist:
         voterlist.append(voterid)
-        name = str(voterid)+str(sha256(str(voterid).encode('utf-8')).hexdigest())
-        with open('temp/VoterID_Database.txt', 'a',newline = '') as voterdata:
-            voterdata.write(name)
+        with open('temp/VoterID_Database.txt', 'a') as voterdata:
+            voterdata.write(str(sha256(str(voterid).encode('utf-8')).hexdigest()))
+            voterdata.write("\n")
         return render_template('vote.html')
     else:
         return render_template('oops.html')
@@ -152,12 +157,10 @@ def votersignup():
 @app.route('/vote', methods = ['POST'])
 def voter():
     choice = request.form['candidate']
-    v1 = vote(int(choice))
-
+    v1 = vote(invisiblevoter, int(choice))
     with open('temp/votefile.csv','a',newline="") as votefile:
         writer = csv.writer(votefile)
-        for key,value in v1.voteobject.items():
-            writer.writerow([key,value])
+        writer.writerow(v1.votedata)
 
     if vote.count%4==0:
         blockx = Block().mineblock()
@@ -175,6 +178,7 @@ EVoting = Blockchain()
 EVoting.addGenesis()
 f = open('temp/VoterID_Database.txt', 'w+')
 f.close()
+
 
 if __name__ == '__main__':
 

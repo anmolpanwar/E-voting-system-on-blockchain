@@ -2,34 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm commit">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Major2/blockchain.py" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/blockchain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evote.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskapp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskapp2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sha256_trial.py" beforeDir="false" afterPath="$PROJECT_DIR$/sha256_trial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Major2/enc.py" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/enc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Major2/temp/Blockchain.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/temp/Blockchain.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Major2/temp/VoterID_Database.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/temp/VoterID_Database.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Major2/templates/oops.html" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/templates/oops.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Major2/templates/thanks.html" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/templates/thanks.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/temporary.py" beforeDir="false" afterPath="$PROJECT_DIR$/temporary.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/crypto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/decrypto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto-1.4.1.dist-info/DESCRIPTION.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto-1.4.1.dist-info/INSTALLER" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto-1.4.1.dist-info/METADATA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto-1.4.1.dist-info/RECORD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto-1.4.1.dist-info/WHEEL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto-1.4.1.dist-info/entry_points.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto-1.4.1.dist-info/pydist.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto-1.4.1.dist-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto/app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto/decryptoapp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto/library/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto/library/cryptor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto/library/hash.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto/library/package.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/crypto/settings.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,8 +21,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Major2/blockchain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="181" column="24" lean-forward="true" selection-start-line="181" selection-start-column="24" selection-end-line="181" selection-end-column="24" />
+            <state relative-caret-position="-560">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/temporary.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="22">
+              <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -51,10 +39,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Major2/enc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="564">
+              <caret line="42" column="17" lean-forward="true" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
+                <marker date="1583899092734" expanded="true" signature="1387:1563" ph="..." />
               </folding>
             </state>
           </provider>
@@ -68,6 +57,15 @@
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/lib/python3.8/site-packages/Crypto/PublicKey/RSA.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1955">
+              <caret line="238" column="34" selection-start-line="238" selection-start-column="34" selection-end-line="238" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -94,7 +92,6 @@
         <option value="$PROJECT_DIR$/flaskapp2.py" />
         <option value="$PROJECT_DIR$/flaskapp.py" />
         <option value="$PROJECT_DIR$/evote.py" />
-        <option value="$PROJECT_DIR$/temporary.py" />
         <option value="$PROJECT_DIR$/pub_key_crypto.py" />
         <option value="$PROJECT_DIR$/experiment.py" />
         <option value="$PROJECT_DIR$/venv/signtest.py" />
@@ -108,8 +105,9 @@
         <option value="$PROJECT_DIR$/project/encryption.py" />
         <option value="$PROJECT_DIR$/project/blockchain.py" />
         <option value="$PROJECT_DIR$/venv/lib/python3.8/site-packages/Crypto/Random/_UserFriendlyRNG.py" />
-        <option value="$PROJECT_DIR$/Major2/enc.py" />
+        <option value="$PROJECT_DIR$/temporary.py" />
         <option value="$PROJECT_DIR$/Major2/blockchain.py" />
+        <option value="$PROJECT_DIR$/Major2/enc.py" />
       </list>
     </option>
   </component>
@@ -160,27 +158,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.blockchain (1)">
-    <configuration name="block" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="python practice" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/block.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="blockchain (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="python practice" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -265,13 +242,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="temporary" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="python practice" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/temporary.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.blockchain (1)" />
         <item itemvalue="Python.enc" />
+        <item itemvalue="Python.temporary" />
         <item itemvalue="Python.pub_key_crypto" />
         <item itemvalue="Python.blockchain" />
-        <item itemvalue="Python.block" />
       </list>
     </recent_temporary>
   </component>
@@ -280,7 +278,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13511905" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -329,13 +326,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.8/site-packages/Crypto/PublicKey/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
@@ -397,13 +387,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="1941" column="8" selection-start-line="1941" selection-start-column="8" selection-end-line="1941" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/temporary.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -511,13 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.8/site-packages/Crypto/PublicKey/RSA.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3570">
-          <caret line="238" column="34" selection-start-line="238" selection-start-column="34" selection-end-line="238" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.8/site-packages/Crypto/PublicKey/pubkey.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1669">
@@ -545,16 +521,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Major2/enc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pub_key_crypto.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -565,10 +531,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.8/site-packages/Crypto/PublicKey/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.8/site-packages/Crypto/PublicKey/RSA.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1955">
+          <caret line="238" column="34" selection-start-line="238" selection-start-column="34" selection-end-line="238" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temporary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Major2/enc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="42" column="17" lean-forward="true" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1583899092734" expanded="true" signature="1387:1563" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Major2/blockchain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="181" column="24" lean-forward="true" selection-start-line="181" selection-start-column="24" selection-end-line="181" selection-end-column="24" />
+        <state relative-caret-position="-560">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
