@@ -10,7 +10,6 @@ import enc
 difficulty = 2
 
 class vote:
-
     count = 0
 
     def __init__(self,hiddenvoterid,candidateID):
