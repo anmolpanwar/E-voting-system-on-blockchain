@@ -66,6 +66,7 @@ class Blockchain:
                 print("Nonce: ", data.nonce, '\n\t\t|\n\t\t|')
 
     @staticmethod
+    #--to clear up the votepool after a block has been mined...
     def update_votepool():
         votefile = open('temp/votefile.csv','w+')
         votefile.close()
