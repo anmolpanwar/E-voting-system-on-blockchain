@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm commit">
-      <change afterPath="$PROJECT_DIR$/Major2/aes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Major2/blockchain.py" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/blockchain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Major2/enc.py" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/enc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Major2/temp/Blockchain.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/temp/Blockchain.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Major2/temp/VoterID_Database.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/temp/VoterID_Database.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Major2/temp/votefile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/temp/votefile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temporary.py" beforeDir="false" afterPath="$PROJECT_DIR$/temporary.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,11 +15,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Major2/blockchain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="38" column="56" lean-forward="true" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
+            <state relative-caret-position="282">
+              <caret line="143" column="68" selection-start-line="143" selection-start-column="68" selection-end-line="143" selection-end-column="68" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <element signature="e#2878#2991#0" />
               </folding>
             </state>
           </provider>
@@ -593,11 +584,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Major2/blockchain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="38" column="56" lean-forward="true" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
+        <state relative-caret-position="282">
+          <caret line="143" column="68" selection-start-line="143" selection-start-column="68" selection-end-line="143" selection-end-column="68" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#2878#2991#0" />
           </folding>
         </state>
       </provider>

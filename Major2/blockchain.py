@@ -139,13 +139,9 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-# @app.route('/signup', methods = ['POST'])
-# def hello():
-#     return render_template('hello.html')
-
 voterlist = []
 invisiblevoter = '' # global variable used to hide voter's identity
-voterkeys = {}
+voterkeys = {} #--voter's keys stored temporarily in this dictionary
 
 @app.route('/signup', methods = ['POST'])
 def votersignup():
