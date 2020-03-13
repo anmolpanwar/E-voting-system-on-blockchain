@@ -39,9 +39,9 @@ def verify(publickey,data,sign):
 if __name__=='__main__':
      rpriv,rpub = rsakeys()
      spriv,spub = rsakeys()
-     has = 'eee9ca050b625c9a8206beb29e5687d915f70aaa061993d9ea5bdf2041c66a26'
-     rl = bytes(has,'utf-8')
-     signed = sign(spriv,rl)
-     print(signed)
 
-     print(verify(spub,rl,signed))
+     rl = []
+     signed = sign(spriv,bytes(rl))
+     encrypted = encrypt(rpub,signed)
+     signed1 = decrypt(rpriv,encrypted)
+     print(verify(spub,bytes(rl),signed1))

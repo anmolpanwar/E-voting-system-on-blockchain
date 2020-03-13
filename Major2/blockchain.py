@@ -6,6 +6,7 @@ from flask import *
 import csv
 import pickle
 import enc as enc
+import aes as aes
 
 difficulty = 2
 
@@ -19,16 +20,20 @@ class vote:
         vote.count+=1
         self.votedata = [self.hiddenvoterid, self.candidate, self.time]
 
-    def signvote(self):
-        pass
+    #--vote gets a digital signature by voter's private key and gets signed by admin public key
+    def encryptvote(self):
+        self.votedata.append(enc.sign(voterkeys['sk'],bytes(sha256(str('---'.join(str(x) for x in self.votedata)).encode('utf-8')).hexdigest(),'utf-8')))
+        return [aes.encrypt('***'.join(str(i) for i in self.votedata),voterkeys['aeskey']), enc.encrypt(Blockchain.adminpub,voterkeys['aeskey'])]
+
 
 class Blockchain:
 
     chain = []
+    adminpriv,adminpub = enc.rsakeys()
 
-    def __init__(cls):
+    def __init__(self):
+        #--administrator public/private key pair generated along with the blockchain initialization
         print('Blockchain initialized')
-        pass
 
     def genesis(self):
         gen = Block(0,"Let the real democracy rule!!", sha256(str("Let the real democracy rule!!").encode('utf-8')).hexdigest(), difficulty, time(),'',0,'Errrrrorrr')
@@ -94,7 +99,7 @@ class Block:
             with open('temp/votefile.csv', mode = 'r') as votepool:
                 csvreader = csv.reader(votepool)
                 for row in csvreader:
-                    votelist.append({'VoterID':row[0],'CandidateID':row[1], 'Time':row[2]})
+                    votelist.append({'Vote Data':row[0],'Key':row[1]})
             return votelist
 
         except(IOError,IndexError):
@@ -140,12 +145,13 @@ def home():
 
 voterlist = []
 invisiblevoter = '' # global variable used to hide voter's identity
+voterkeys = {}
 
 @app.route('/signup', methods = ['POST'])
 def votersignup():
-
     voterid = request.form['voterid']
     pin = request.form['pin']
+    voterkeys['aeskey'] = aes.get_private_key(voterid)
     global invisiblevoter
 
 #####-------ZERO KNOWLEDGE PROOF-------########
@@ -167,16 +173,14 @@ def votersignup():
 
 @app.route('/vote', methods = ['POST'])
 def voter():
+    voterkeys['sk'],voterkeys['pk'] = enc.rsakeys()         #--voter public/private key pair generated
     choice = request.form['candidate']
     v1 = vote(invisiblevoter, int(choice))
-    priv,pub = enc.rsakeys()
-    signed = enc.sign(priv,bytes(v1.votedata))
-    encrypted =
 
-    # with open('temp/votefile.csv','a',newline="") as votefile:
-    #     writer = csv.writer(votefile)
-    #     writer.writerow(v1.votedata)
-
+    with open('temp/votefile.csv','a',newline="") as votefile:
+        writer = csv.writer(votefile)
+        writer.writerow(v1.encryptvote())
+  
 #---Current frequency to add and mine new blocks is after generation of every 4 votes
     if vote.count%4==0:
         blockx = Block().mineblock()
