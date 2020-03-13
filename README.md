@@ -24,5 +24,5 @@ An E-voting system based on blockchain, build from scratch.
 
  For a practical scenario - the length of the output hash of a SHA256 algorithm is 256 bits. The bitcoin protocol dictates that the hash for each block must begin with AT LEAST 30 zeroes. This means we have to check AT MOST 2^30 possible outcomes and an AVERAGE of 2^29 outcomes to output the desired hash.
  This probability is close to 1 in a Billion and for an average computer, this would take approximately 15 minutes to compute and close to 10 minutes for an ASIC (Application Specific Integrated Circuits) device; a device specially designed to compute hashes and nothing else.
- If the average time of adding a new block gets lesser and lesser, the difficulty is increased by the bitcoin protocol itself.
+ If the average time of adding a new block gets lesser, the difficulty is increased by the bitcoin protocol itself.
 
