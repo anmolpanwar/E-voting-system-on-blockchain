@@ -29,10 +29,10 @@ class vote:
 class Blockchain:
 
     chain = []
+    #--administrator public/private key pair generated along with the blockchain initialization.
     adminpriv,adminpub = enc.rsakeys()
 
     def __init__(self):
-        #--administrator public/private key pair generated along with the blockchain initialization
         print('Blockchain initialized')
 
     def genesis(self):
