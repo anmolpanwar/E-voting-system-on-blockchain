@@ -1,9 +1,12 @@
+#--libraries
 from hashlib import *
 import cryptography
 from time import time
 from flask import *
 import csv
 import pickle
+
+#--other project files
 import enc as enc
 import aes as aes
 
