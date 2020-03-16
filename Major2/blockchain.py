@@ -37,15 +37,21 @@ class Blockchain:
     adminpriv,adminpub = enc.rsakeys()
 
     def __init__(self):
+        self.addGenesis()
         print('Blockchain initialized')
 
-    def genesis(self):
-        #genesis block created
+    @staticmethod
+    #--genesis block creation has nothing to do with blockchain class...
+    #--...but has to be created when blockchain is initialized
+    def genesis():
+        #--genesis block created
         gen = Block(0,"Let the real democracy rule!!", sha256(str("Let the real democracy rule!!").encode('utf-8')).hexdigest(), difficulty, time(),'',0,'Errrrrorrr')
         return gen
 
-    def addGenesis(self):
-        genesisblock = self.genesis()
+    @staticmethod
+    def addGenesis():
+        genesisblock = Blockchain.genesis()
+        #--find the proof of work for genesis block
         genesisblock.nonce = genesisblock.pow()
         genesisblock.hash = genesisblock.calcHash()
         Blockchain.chain.append(genesisblock)
@@ -182,8 +188,11 @@ def votersignup():
 
 @app.route('/vote', methods = ['POST'])
 def voter():
+#--the voter is eligible if reached this page.
+#--hence his own keys will be generated.
     voterkeys['sk'],voterkeys['pk'] = enc.rsakeys()         #--voter public/private key pair generated
     choice = request.form['candidate']
+#--vote object created
     v1 = vote(invisiblevoter, int(choice))
 
     with open('temp/votefile.csv','a',newline="") as votefile:
