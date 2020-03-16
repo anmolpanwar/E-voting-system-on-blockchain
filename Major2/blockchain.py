@@ -6,7 +6,7 @@ from flask import *
 import csv
 import pickle
 
-#--other project files
+#--project files
 import enc as enc
 import aes as aes
 
@@ -31,13 +31,16 @@ class vote:
 class Blockchain:
 
     chain = []
+
     #--administrator public/private key pair generated along with the blockchain initialization.
+    #--the public key of admin will be used to encrypt the vote data for confidentiality
     adminpriv,adminpub = enc.rsakeys()
 
     def __init__(self):
         print('Blockchain initialized')
 
     def genesis(self):
+        #genesis block created
         gen = Block(0,"Let the real democracy rule!!", sha256(str("Let the real democracy rule!!").encode('utf-8')).hexdigest(), difficulty, time(),'',0,'Errrrrorrr')
         return gen
 
@@ -46,12 +49,15 @@ class Blockchain:
         genesisblock.nonce = genesisblock.pow()
         genesisblock.hash = genesisblock.calcHash()
         Blockchain.chain.append(genesisblock)
+
+        #--information of genesis block written to the blockchain data file
         with open('temp/Blockchain.dat', 'ab') as genfile:
             pickle._dump(genesisblock, genfile)
         print("Genesis block added")
 
     @staticmethod
     def display():
+        #--print the information of blocks of the blockchain in the console
         with open('temp/blockchain.dat','rb') as blockfile:
             for i in range(len(EVoting.chain)):
                 data = pickle._load(blockfile)
@@ -75,6 +81,8 @@ class Blockchain:
 
 class Block:
 
+    #--basic structure of block that will be created when the block is generated
+    #--the data in the block will be updated later and block will be mined then.
     def __init__(self,height = 0,data = 'WARNING = SOME ERROR OCCURED',merkle = '0',difficulty = 0,time = 0,prevHash = '0',pow=0, hash = 'ERROR'):
         self.height = height                    #len(Blockchain.chain-1)
         self.data = data                        #loadvote()
@@ -83,14 +91,16 @@ class Block:
         self.timeStamp = time                   #time()
         self.prevHash = prevHash                #previous block hash
         self.nonce = pow                        #proof of work function will find nonce
-        self.hash = hash
+        self.hash = hash                        #hash of the current block
 
+    #--The HEART OF BLOCKCHAIN - 'Proof-of-Work' function
     def pow(self,zero=difficulty):
         self.nonce=0
         while(self.calcHash()[:zero]!='0'*zero):
             self.nonce+=1
         return self.nonce
 
+    #--calculate hash of a given block
     def calcHash(self):
         return sha256((str(str(self.data)+str(self.nonce)+str(self.timeStamp)+str(self.prevHash))).encode('utf-8')).hexdigest()
 
@@ -165,7 +175,7 @@ def votersignup():
             voterdata.write(str(sha256(str(voterid).encode('utf-8')).hexdigest()))
             voterdata.write("\n")
         return render_template('vote.html')
-
+#--If not, the voter will be redirected to a different page.
     else:
         return render_template('oops.html')
 

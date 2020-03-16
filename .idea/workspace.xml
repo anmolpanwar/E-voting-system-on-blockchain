@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm commit" />
+    <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm commit">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Major2/blockchain.py" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/blockchain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temporary.py" beforeDir="false" afterPath="$PROJECT_DIR$/temporary.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,11 +14,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Major2/blockchain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="143" selection-start-line="143" selection-end-line="143" />
+            <state relative-caret-position="442">
+              <caret line="102" column="38" selection-start-line="102" selection-start-column="38" selection-end-line="102" selection-end-column="38" />
+              <folding>
+                <element signature="e#13#34#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -22,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Major2/aes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="51" column="11" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="129" />
+            <state relative-caret-position="450">
+              <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -31,7 +38,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Major2/enc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
+            <state relative-caret-position="684">
               <caret line="36" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -40,13 +47,9 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/temporary.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -85,14 +88,14 @@
         <option value="$PROJECT_DIR$/project/blockchain.py" />
         <option value="$PROJECT_DIR$/venv/lib/python3.8/site-packages/Crypto/Random/_UserFriendlyRNG.py" />
         <option value="$PROJECT_DIR$/Major2/enc.py" />
-        <option value="$PROJECT_DIR$/temporary.py" />
         <option value="$PROJECT_DIR$/Major2/aes.py" />
         <option value="$PROJECT_DIR$/Major2/blockchain.py" />
+        <option value="$PROJECT_DIR$/temporary.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1680" />
+    <option name="width" value="834" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -101,6 +104,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -117,7 +121,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -137,7 +140,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.blockchain (1)">
+  <component name="RunManager" selected="Python.temporary">
     <configuration name="aes" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="python practice" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -245,9 +248,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.temporary" />
         <item itemvalue="Python.blockchain (1)" />
         <item itemvalue="Python.aes" />
-        <item itemvalue="Python.temporary" />
         <item itemvalue="Python.enc" />
         <item itemvalue="Python.pub_key_crypto" />
       </list>
@@ -257,10 +260,10 @@
     <configuration />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="0" width="834" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13511905" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27218226" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32944608" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50476193" side_tool="true" weight="0.3313897" />
@@ -553,23 +556,16 @@
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.8/site-packages/Crypto/Random/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Major2/blockchain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="143" selection-start-line="143" selection-end-line="143" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Major2/aes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="51" column="11" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="129" />
+        <state relative-caret-position="450">
+          <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Major2/enc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
+        <state relative-caret-position="684">
           <caret line="36" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
@@ -577,12 +573,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/temporary.py">
+    <entry file="file://$PROJECT_DIR$/Major2/blockchain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        <state relative-caret-position="442">
+          <caret line="102" column="38" selection-start-line="102" selection-start-column="38" selection-end-line="102" selection-end-column="38" />
+          <folding>
+            <element signature="e#13#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temporary.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
