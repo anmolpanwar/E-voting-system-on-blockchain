@@ -16,6 +16,7 @@ class vote:
     count = 0
 
     def __init__(self,hiddenvoterid,candidateID):
+        #--voterid hashed with PIN (ZKP)
         self.hiddenvoterid = hiddenvoterid
         self.candidate = candidateID
         self.time = time()
@@ -24,11 +25,19 @@ class vote:
 
     #--vote gets a digital signature by voter's private key and gets signed by admin public key
     def encryptvote(self):
+        #--the data of the vote (in the votedata list) will be first hashed by SHA-256
+        #--then, the data will be converted into bytes and signed by voter's private key
+        #--and that hashed signature will be appended with votedata itself
         self.votedata.append(enc.sign(voterkeys['sk'],bytes(sha256(str('---'.join(str(x) for x in self.votedata)).encode('utf-8')).hexdigest(),'utf-8')))
+
+        #--now that whole data (the new votedata list) will be encrypted by AES encryption
+        #-- and the shared key of AES will be encrypted with admin's public key
+        #-- this data will be broadcasted and saved into the unconfirmed votepool and will be added in the block
         return [aes.encrypt('***'.join(str(i) for i in self.votedata),voterkeys['aeskey']), enc.encrypt(Blockchain.adminpub,voterkeys['aeskey'])]
 
 
 class Blockchain:
+
 
     chain = []
 
@@ -44,6 +53,7 @@ class Blockchain:
     #--genesis block creation has nothing to do with blockchain class...
     #--...but has to be created when blockchain is initialized
     def genesis():
+
         #--genesis block created
         gen = Block(0,"Let the real democracy rule!!", sha256(str("Let the real democracy rule!!").encode('utf-8')).hexdigest(), difficulty, time(),'',0,'Errrrrorrr')
         return gen
@@ -51,6 +61,7 @@ class Blockchain:
     @staticmethod
     def addGenesis():
         genesisblock = Blockchain.genesis()
+
         #--find the proof of work for genesis block
         genesisblock.nonce = genesisblock.pow()
         genesisblock.hash = genesisblock.calcHash()
@@ -64,24 +75,34 @@ class Blockchain:
     @staticmethod
     def display():
         #--print the information of blocks of the blockchain in the console
-        with open('temp/blockchain.dat','rb') as blockfile:
-            for i in range(len(EVoting.chain)):
-                data = pickle._load(blockfile)
+        try:
+            with open('temp/blockchain.dat','rb') as blockfile:
+                for i in range(len(EVoting.chain)):
+                    data = pickle._load(blockfile)
 
-                print("Block Height: ", data.height)
-                print("Data in block: ", data.data)
-                print("Merkle root: ", data.merkle)
-                print("Difficulty: ", data.difficulty)
-                print("Time stamp: ", data.timeStamp)
-                print("Previous hash: ", data.prevHash)
-                print("Block Hash: ", data.hash)
-                print("Nonce: ", data.nonce, '\n\t\t|\n\t\t|')
+                    #--print all data of a block
+                    print("Block Height: ", data.height)
+                    print("Data in block: ", data.data)
+                    print("Merkle root: ", data.merkle)
+                    print("Difficulty: ", data.difficulty)
+                    print("Time stamp: ", data.timeStamp)
+                    print("Previous hash: ", data.prevHash)
+                    print("Block Hash: ", data.hash)
+                    print("Nonce: ", data.nonce, '\n\t\t|\n\t\t|')
+
+        except FileNotFoundError:
+            print("\n.\n.\n.\n<<<File not found!!>>>")
+
 
     @staticmethod
     #--to clear up the votepool after a block has been mined...
     def update_votepool():
-        votefile = open('temp/votefile.csv','w+')
-        votefile.close()
+        try:
+            votefile = open('temp/votefile.csv','w+')
+            votefile.close()
+
+        except Exception as e:
+            print("Some error occured: ", e)
         return "Done"
 
 
@@ -130,11 +151,11 @@ class Block:
             print (Blockchain.update_votepool())
 
 
-
+    #--create a merkle tree of vote transactions and return the merkle root of the tree
     def merkleRoot(self):
         return 'congrats'
 
-
+    #--fill the block with data and append the block in the blockchain
     def mineblock(self):
         self.height = len(Blockchain.chain)                 #len(Blockchain.chain-1)
         self.data = self.loadvote()                         #loadvote()
@@ -142,11 +163,11 @@ class Block:
         self.difficulty = difficulty                        # DIFFICULTY for the cryptographic puzzle
         self.timeStamp = time()                             #time()
         self.prevHash = Blockchain.chain[-1].calcHash()     #Calculate the hash of previous
-        self.nonce = self.pow()
-        self.hash = self.calcHash()
+        self.nonce = self.pow()                             #Calculate nonce
+        self.hash = self.calcHash()                         #compute hash of current block
         Blockchain.chain.append(self)
 
-        return self
+        return self     #--return block object
 
 #########################################################################
 
@@ -154,13 +175,16 @@ class Block:
 
 app = Flask(__name__)
 
+
 @app.route('/')
+#--the login page, home page
 def home():
     return render_template('home.html')
 
-voterlist = []
-invisiblevoter = '' # global variable used to hide voter's identity
+voterlist = [] #--to keep duplicates out
+invisiblevoter = '' #--global variable used to hide voter's identity
 voterkeys = {} #--voter's keys stored temporarily in this dictionary
+
 
 @app.route('/signup', methods = ['POST'])
 def votersignup():
@@ -207,14 +231,15 @@ def voter():
         print("block added")
     return redirect('/thanks')
 
+
 @app.route('/thanks', methods = ['GET'])
 def thank():
+    #--thank you page 
     return render_template('thanks.html')
 
 
 #--Blockchain initialized and Genesis block added
 EVoting = Blockchain()
-EVoting.addGenesis()
 
 #--Created a file for voter database storage
 f = open('temp/VoterID_Database.txt', 'w+')
