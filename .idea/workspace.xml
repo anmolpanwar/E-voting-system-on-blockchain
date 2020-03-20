@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm commit">
-      <change beforePath="$PROJECT_DIR$/Major2/aes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/aes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Major2/temp/Blockchain.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Major2/temp/VoterID_Database.txt" beforeDir="false" />
-    </list>
+    <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm commit" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +261,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13511905" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13511905" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32944608" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50476193" side_tool="true" weight="0.3313897" />
@@ -274,7 +270,7 @@
       <window_info anchor="bottom" id="Educational.CheckDetails" order="4" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" sideWeight="0.4952381" visible="true" weight="0.25655976" />
+      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.4952381" visible="true" weight="0.25655976" />
       <window_info anchor="bottom" id="Debug" order="8" sideWeight="0.49821427" weight="0.39941692" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />

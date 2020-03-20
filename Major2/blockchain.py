@@ -247,6 +247,6 @@ f.close()
 
 
 if __name__ == '__main__':
-
+    #--run flask application
     app.run(port = 5000)
     Blockchain.display()
