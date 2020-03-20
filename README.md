@@ -26,3 +26,4 @@ An E-voting system based on blockchain, build from scratch.
  This probability is close to 1 in a Billion and for an average computer, this would take approximately 15 minutes to compute and close to 10 minutes for an ASIC (Application Specific Integrated Circuits) device; a device specially designed to compute hashes and nothing else.
  If the average time of adding a new block gets lesser, the difficulty is increased by the bitcoin protocol itself.
 
+Refer to my article - https://medium.com/@anmolpanwar8/heres-why-blockchain-is-not-yet-ready-to-gain-traction-ac92c323d84d
