@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm commit">
-      <change beforePath="$PROJECT_DIR$/Major2/blockchain.py" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/blockchain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Major2/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/templates/home.html" afterDir="false" />
-    </list>
+    <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm commit" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Major2/blockchain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="217" selection-start-line="217" selection-end-line="217" />
+            <state relative-caret-position="1140">
+              <caret line="119" column="27" selection-start-line="119" selection-start-column="27" selection-end-line="119" selection-end-column="27" />
               <folding>
                 <element signature="e#13#34#0" expanded="true" />
               </folding>
@@ -263,7 +260,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13511905" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -583,8 +579,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Major2/blockchain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="217" selection-start-line="217" selection-end-line="217" />
+        <state relative-caret-position="1140">
+          <caret line="119" column="27" selection-start-line="119" selection-start-column="27" selection-end-line="119" selection-end-column="27" />
           <folding>
             <element signature="e#13#34#0" expanded="true" />
           </folding>
