@@ -17,9 +17,9 @@
 				<legend><center><h3>Voter Sign up</h3></center></legend><br>
 				Voter ID: 
 				<input type="text" name="voterid" placeholder="Voter ID" minlength="" required> <br><br><br>
-				Choose a PIN: 
+				Choose a PIN/Password: 
 				<input type="password" name="pin" maxlength="6" placeholder="4-6 digit PIN" id="password1" minlength="4" oninput="setPasswordConfirmValidity();" required><br><br><br>
-				Confirm PIN: 
+				Confirm PIN/Password: 
 				<input type="password" name="pin2" maxlength="6" placeholder="Confirm password" id="password2" minlength="4" oninput="setPasswordConfirmValidity();" required><br>
 				<br>
 			</fieldset>
@@ -32,7 +32,7 @@
 			        if (password1.value === password2.value) {
 			             password2.setCustomValidity('');
 			        } else {
-			            password2.setCustomValidity('PINs don\'t match');
+			            password2.setCustomValidity('Passwords don\'t match');
 			        }
 			        console.log('password2 customError ', document.getElementById('password2').validity.customError);
 			        console.log('password2 validationMessage ', document.getElementById('password2').validationMessage);

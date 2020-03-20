@@ -61,10 +61,6 @@ if __name__=='__main__':
     ourdata[2] = float(ourdata[2])
     ourdata[3] = bytes(((ourdata[3].replace('b\'','')).replace('\'','')),'utf-8')
 
-
-
-
-
     # First let us encrypt secret message
     # encrypted = encrypt("This is a secret message", pw)
     # print(encrypted)
