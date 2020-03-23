@@ -2,17 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm commit">
-      <change afterPath="$PROJECT_DIR$/project/TcpServerNode.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/p2p/p2pbob.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/p2p/p2ptrial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/p2pnode1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/testnode.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Major2/temp/Blockchain.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Major2/temp/VoterID_Database.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Major2/temp/votefile.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Major2/pubkey.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Major2/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/TcpServerNode.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/TcpServerNode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/p2p/p2pbob.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/p2p/p2pbob.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/p2p/p2ptrial.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/p2p/p2ptrial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/p2p/peer1.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/p2p/peer1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/p2p/peer2.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/p2p/peer2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/p2pnode1.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/p2pnode1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/testnode.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/testnode.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
