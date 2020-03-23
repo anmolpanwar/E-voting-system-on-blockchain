@@ -1,28 +1,60 @@
 <!DOCTYPE html>
 <html>
+<header><link rel="stylesheet" type="text/css" href="uu/semantic.min.css">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="uu/semantic.min.js"></script></header>
 <style>
-	.content{
-		max-width: 500px;
-		margin: auto;
-	}
+	.content
+		{
+			max-width: 500px;
+			margin: auto;
+			font-size: 18px;
+		}
+
+	label
+		{
+			display: inline-block;
+			width: 200px;
+			margin-right:30px;
+			text-align:right;
+		}
+
+	input{
+		}
+
+	fieldset
+		{	
+			width:500px;
+			margin:0px auto;
+		}
 </style>
 <title>E - Voting Portal</title>
 <head>
-	<h1 align="center">Welcome to new Voting System</h1>
+	<h1 align="center">Welcome to the new Voting System</h1>
 </head>
 <body>
+	<div class="ui animated button" tabindex="0">
+  <div class="visible content">Next</div>
+  <div class="hidden content">
+    <i class="right arrow icon"></i>
+  </div>
+</div>
 	<div class="content">
 		<form action="/signup" method="POST" id="signup">
 			<fieldset>
 				<legend><center><h3>Voter Sign up</h3></center></legend><br>
-				Voter ID: 
-				<input type="text" name="voterid" placeholder="Voter ID" minlength="" required> <br><br><br>
-				Choose a PIN/Password: 
-				<input type="password" name="pin" maxlength="6" placeholder="4-6 digit PIN" id="password1" minlength="4" oninput="setPasswordConfirmValidity();" required><br><br><br>
-				Confirm PIN/Password: 
-				<input type="password" name="pin2" maxlength="6" placeholder="Confirm password" id="password2" minlength="4" oninput="setPasswordConfirmValidity();" required><br>
+				<label for='voterid'>Voter ID: </label>
+				<input type="text" name="voterid" placeholder="Voter ID" minlength="" required size="30"> <br><br><br>
+				<label for = 'pin'>Choose a PIN/Password: </label>
+				<input type="password" name="pin" maxlength="6" placeholder="4-6 digit PIN/Password" id="password1" minlength="4" oninput="setPasswordConfirmValidity();" required size="30"><br><br><br>
+				<label for = 'pin2'>Confirm PIN/Password:</label>
+				<input type="password" name="pin2" maxlength="6" placeholder="Confirm password" id="password2" minlength="4" oninput="setPasswordConfirmValidity();" required size="30"><br>
 				<br>
 			</fieldset>
+			<br>
 			<center><button type="submit" value="submit">Proceed to Vote</button></center>
 			<script>
 			    function setPasswordConfirmValidity(str) {

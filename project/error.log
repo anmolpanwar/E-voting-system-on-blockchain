@@ -1,0 +1,11 @@
+
+Traceback (most recent call last):
+  File "/Users/anmolpanwar/Documents/PycharmProjects/python practice/venv/lib/python3.8/site-packages/pyp2p/sock.py", line 195, in connect
+    self.s.connect((addr, int(port)))
+socket.timeout: timed out
+ <class 'socket.timeout'> sock.py 195 timed out
+Traceback (most recent call last):
+  File "/Users/anmolpanwar/Documents/PycharmProjects/python practice/venv/lib/python3.8/site-packages/pyp2p/sock.py", line 195, in connect
+    self.s.connect((addr, int(port)))
+socket.timeout: timed out
+ <class 'socket.timeout'> sock.py 195 timed out
