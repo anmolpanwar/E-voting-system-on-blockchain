@@ -3,15 +3,15 @@ import socket
 s = socket.socket()
 print('socket created')
 
-s.bind(('localhost',9998))
+s.bind(('192.168.0.135',9999))
 
-s.listen(1)
+s.listen(5)
 
-print('waiting')
+# print('waiting')
 
 while True:
     c,addr = s.accept()
-    name = c.recv(1024).decode()
-    print('Connected with:', addr,name)
-    c.send(bytes('Hi'+name,'utf-8'))
-    c.close()
+    print('conn esbd: ', addr)
+    msg = c.recv(1024).decode()
+    print('Pudipeddi mac says:', msg)
+    c.send(bytes('ackd','utf-8'))
