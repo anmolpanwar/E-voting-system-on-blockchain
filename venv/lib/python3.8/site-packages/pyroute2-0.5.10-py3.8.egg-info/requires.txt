@@ -1,0 +1,6 @@
+
+[:platform_system == "Windows"]
+win_inet_pton
+
+[ss2]
+psutil~=5.0
