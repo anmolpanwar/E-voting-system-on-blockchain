@@ -9,14 +9,13 @@ s.listen(5)
 
 print('waiting')
 
-c,addr = s.accept()
-print('conn esbd: ', addr)
-
 while True:
     try:
+        c,addr = s.accept()
+        print('conn esbd: ',addr)
         msg = c.recv(1024).decode()
-        print('Pudipeddi mac says:', msg)
-        c.send(bytes('ackd','utf-8'))
+        print('Pudipeddi mac says:',msg)
+        c.send(bytes('ACKD','utf-8'))
     except BrokenPipeError:
         pass
 

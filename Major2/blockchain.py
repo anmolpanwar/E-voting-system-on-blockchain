@@ -5,11 +5,14 @@ from time import time
 from flask import *
 import csv
 import pickle
+import simplejson as json
 
 #--project files
 import enc as enc
 import aes as aes
 import peer2 as pp
+
+
 difficulty = 2
 
 class vote:
@@ -223,7 +226,7 @@ def voter():
         writer = csv.writer(votefile)
         encvotedata = v1.encryptvote()
         writer.writerow(encvotedata)
-    pp.connect_to_peer('192.168.0.152',9998,str(encvotedata))
+    pp.connect_to_peer('192.168.0.135',9999,encvotedata)
 
 #---Current frequency to add and mine new blocks is after generation of every 4 votes
     if vote.count%4==0:
