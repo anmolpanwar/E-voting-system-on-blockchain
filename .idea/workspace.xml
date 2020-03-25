@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm commit">
-      <change afterPath="$PROJECT_DIR$/Major2/jsonify.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/p2p/jsontest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Major2/blockchain.py" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/blockchain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Major2/peer2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/peer2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Major2/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Major2/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/p2p/peer1.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/p2p/peer1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/p2p/peer2.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/p2p/peer2.py" afterDir="false" />
-    </list>
+    <list default="true" id="e426fac8-a4c7-4e26-a16e-cda5a9db36d8" name="Default Changelist" comment="pycharm commit" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
