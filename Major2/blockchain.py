@@ -9,7 +9,7 @@ import pickle
 #--project files
 import enc as enc
 import aes as aes
-
+import peer2 as pp
 difficulty = 2
 
 class vote:
@@ -221,8 +221,10 @@ def voter():
 
     with open('temp/votefile.csv','a',newline="") as votefile:
         writer = csv.writer(votefile)
-        writer.writerow(v1.encryptvote())
-  
+        encvotedata = v1.encryptvote()
+        writer.writerow(encvotedata)
+    pp.connect_to_peer('192.168.0.152',9998,str(encvotedata))
+
 #---Current frequency to add and mine new blocks is after generation of every 4 votes
     if vote.count%4==0:
         blockx = Block().mineblock()
@@ -234,7 +236,7 @@ def voter():
 
 @app.route('/thanks', methods = ['GET'])
 def thank():
-    #--thank you page 
+    #--thank you page
     return render_template('thanks.html')
 
 
