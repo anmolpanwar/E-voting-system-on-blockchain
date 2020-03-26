@@ -1,6 +1,6 @@
 # E-voting-system-on-blockchain
 An E-voting system based on blockchain, build from scratch.
-![Image description](https://raw.githubusercontent.com/anmolpanwar/E-voting-system-on-blockchain/master/path/to/img.png)
+![Image description](https://github.com/anmolpanwar/E-voting-system-on-blockchain/blob/master/Major2/cover.png)
 
 
 # What is a blockchain?
