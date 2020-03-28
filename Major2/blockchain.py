@@ -1,19 +1,21 @@
 #--libraries
 from hashlib import *
 import cryptography
-from time import time
+from time import time,sleep
 from flask import *
 import csv
 import pickle
 import simplejson as json
+import threading as thr
 
 #--project files
 import enc as enc
 import aes as aes
 import peer2 as pp
 
-
+#--Global variables
 difficulty = 2
+BLOCK_TIME_LIMIT = 15 #--(seconds)
 
 class vote:
     count = 0
@@ -38,6 +40,14 @@ class vote:
         #-- this data will be broadcasted and saved into the unconfirmed votepool and will be added in the block
         return [aes.encrypt('***'.join(str(i) for i in self.votedata),voterkeys['aeskey']), enc.encrypt(Blockchain.adminpub,voterkeys['aeskey'])]
 
+    #--keep track of no. of votes
+    def inc_votecount(self):
+        vote.count+=1
+
+    def get_votecount(self):
+        #--return the current number of votes
+        return votecount
+
 
 class Blockchain:
 
@@ -47,6 +57,9 @@ class Blockchain:
     #--administrator public/private key pair generated along with the blockchain initialization.
     #--the public key of admin will be used to encrypt the vote data for confidentiality
     adminpriv,adminpub = enc.rsakeys()
+    with open('temp/Adminkeys.txt', 'wb') as adminkeyfile:
+        pickle._dump(adminpriv,adminkeyfile)
+        pickle._dump(adminpub,adminkeyfile)
 
     def __init__(self):
         self.addGenesis()
@@ -58,7 +71,7 @@ class Blockchain:
     def genesis():
 
         #--genesis block created
-        gen = Block(0,"Let the real democracy rule!!", sha256(str("Let the real democracy rule!!").encode('utf-8')).hexdigest(), difficulty, time(),'',0,'Errrrrorrr')
+        gen = Block(0,"Let the real democracy rule!!",0, sha256(str("Let the real democracy rule!!").encode('utf-8')).hexdigest(), difficulty, time(),'',0,'Errrrrorrr')
         return gen
 
     @staticmethod
@@ -86,6 +99,7 @@ class Blockchain:
                     #--print all data of a block
                     print("Block Height: ", data.height)
                     print("Data in block: ", data.data)
+                    print("Number of votes: ",data.number_of_votes)
                     print("Merkle root: ", data.merkle)
                     print("Difficulty: ", data.difficulty)
                     print("Time stamp: ", data.timeStamp)
@@ -113,9 +127,10 @@ class Block:
 
     #--basic structure of block that will be created when the block is generated
     #--the data in the block will be updated later and block will be mined then.
-    def __init__(self,height = 0,data = 'WARNING = SOME ERROR OCCURED',merkle = '0',difficulty = 0,time = 0,prevHash = '0',pow=0, hash = 'ERROR'):
+    def __init__(self,height = 0,data = 'WARNING = SOME ERROR OCCURED',votes = 0,merkle = '0',difficulty = 0,time = 0,prevHash = '0',pow=0, hash = 'ERROR'):
         self.height = height                    #len(Blockchain.chain-1)
         self.data = data                        #loadvote()
+        self.number_of_votes = votes            #votecount per block
         self.merkle = merkle                    #calculateMerkleRoot()
         self.difficulty = difficulty            #cryptography difficulty
         self.timeStamp = time                   #time()
@@ -138,12 +153,14 @@ class Block:
     @staticmethod
     def loadvote():
         votelist = []
+        votecount = 0
         try:
             with open('temp/votefile.csv', mode = 'r') as votepool:
                 csvreader = csv.reader(votepool)
                 for row in csvreader:
                     votelist.append({'Vote Data':row[0],'Key':row[1]})
-            return votelist
+                    votecount+=1
+            return votelist,votecount
 
         except(IOError,IndexError):
             pass
@@ -161,8 +178,8 @@ class Block:
     #--fill the block with data and append the block in the blockchain
     def mineblock(self):
         self.height = len(Blockchain.chain)                 #len(Blockchain.chain-1)
-        self.data = self.loadvote()                         #loadvote()
-        self.merkle = self.merkleRoot()                     #calculateMerkleRoot()
+        self.data,self.number_of_votes = self.loadvote()    #loadvote() and return number of votes in current block
+        self.merkle = self.merkleRoot()                     #MerkleRoot()
         self.difficulty = difficulty                        # DIFFICULTY for the cryptographic puzzle
         self.timeStamp = time()                             #time()
         self.prevHash = Blockchain.chain[-1].calcHash()     #Calculate the hash of previous
@@ -229,11 +246,11 @@ def voter():
     pp.connect_to_peer('192.168.0.135',9999,encvotedata)
 
 #---Current frequency to add and mine new blocks is after generation of every 4 votes
-    if vote.count%4==0:
-        blockx = Block().mineblock()
-        with open('temp/blockchain.dat','ab') as blockfile:
-            pickle._dump(blockx,blockfile)
-        print("block added")
+    # if vote.count%4==0:
+    #     blockx = Block().mineblock()
+    #     with open('temp/blockchain.dat','ab') as blockfile:
+    #         pickle._dump(blockx,blockfile)
+    #     print("block added")
     return redirect('/thanks')
 
 
@@ -250,8 +267,32 @@ EVoting = Blockchain()
 f = open('temp/VoterID_Database.txt', 'w+')
 f.close()
 
+#--inline methode that runs parallel to the program
+def inlinetimer():
+    while True:
+        sleep(BLOCK_TIME_LIMIT)        #--global variable
+        #--sleep for 15 seconds --> mine a block --> repeat
+        blockx = Block().mineblock()
+        with open('temp/blockchain.dat','ab') as blockfile:
+            pickle._dump(blockx,blockfile)
+        print("block added")
+
+#--seperate thread running in the background
+def mineblocktimer():
+    timerthread = thr.Thread(target=inlinetimer)
+    timerthread.start()
+
+mineblocktimer()
+
 
 if __name__ == '__main__':
     #--run flask application
     app.run(port = 5000)
+    #--after flask application stops
+    #--load the remaining data in the temporary vote pool
+    #--into a block and mine it
+    lastblock = Block().mineblock()
+    with open('temp/blockchain.dat','ab') as blockfile:
+        pickle._dump(lastblock,blockfile)
+    print("block added")
     Blockchain.display()
