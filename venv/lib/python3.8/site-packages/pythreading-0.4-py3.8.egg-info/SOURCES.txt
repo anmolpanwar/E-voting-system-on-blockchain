@@ -1,0 +1,8 @@
+README.md
+setup.cfg
+setup.py
+pythreading/threading.py
+pythreading.egg-info/PKG-INFO
+pythreading.egg-info/SOURCES.txt
+pythreading.egg-info/dependency_links.txt
+pythreading.egg-info/top_level.txt
