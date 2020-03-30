@@ -7,6 +7,7 @@ import csv
 import pickle
 import simplejson as json
 import threading as thr
+import os
 
 #--project files
 import enc as enc
@@ -14,8 +15,11 @@ import aes as aes
 import peer2 as pp
 
 #--Global variables
-difficulty = 2
+DIFFICULTY = 2
+
 BLOCK_TIME_LIMIT = 15 #--(seconds)
+
+PROJECT_PATH = "~/Documents/PycharmProjects/python practice/Major2"
 
 class vote:
     count = 0
@@ -25,7 +29,6 @@ class vote:
         self.hiddenvoterid = hiddenvoterid
         self.candidate = candidateID
         self.time = time()
-        vote.count+=1
         self.votedata = [self.hiddenvoterid, self.candidate, self.time]
 
     #--vote gets a digital signature by voter's private key and gets signed by admin public key
@@ -33,7 +36,7 @@ class vote:
         #--the data of the vote (in the votedata list) will be first hashed by SHA-256
         #--then, the data will be converted into bytes and signed by voter's private key
         #--and that hashed signature will be appended with votedata itself
-        self.votedata.append(enc.sign(voterkeys['sk'],bytes(sha256(str('---'.join(str(x) for x in self.votedata)).encode('utf-8')).hexdigest(),'utf-8')))
+        self.votedata.append(enc.sign(voterkeys['sk'], bytes(sha256(str('---'.join(str(x) for x in self.votedata)).encode('utf-8')).hexdigest(),'utf-8')))
 
         #--now that whole data (the new votedata list) will be encrypted by AES encryption
         #-- and the shared key of AES will be encrypted with admin's public key
@@ -41,17 +44,18 @@ class vote:
         return [aes.encrypt('***'.join(str(i) for i in self.votedata),voterkeys['aeskey']), enc.encrypt(Blockchain.adminpub,voterkeys['aeskey'])]
 
     #--keep track of no. of votes
-    def inc_votecount(self):
-        vote.count+=1
+    @classmethod
+    def inc_votecount(cls):
+        cls.count+=1
 
-    def get_votecount(self):
+    @classmethod
+    def get_votecount(cls):
         #--return the current number of votes
-        return votecount
+        return cls.count
 
 
 class Blockchain:
-
-
+    #--holds the info of chain of blocks as objects
     chain = []
 
     #--administrator public/private key pair generated along with the blockchain initialization.
@@ -71,7 +75,7 @@ class Blockchain:
     def genesis():
 
         #--genesis block created
-        gen = Block(0,"Let the real democracy rule!!",0, sha256(str("Let the real democracy rule!!").encode('utf-8')).hexdigest(), difficulty, time(),'',0,'Errrrrorrr')
+        gen = Block(0,"Let the real democracy rule!!",0, sha256(str("Let the real democracy rule!!").encode('utf-8')).hexdigest(), DIFFICULTY, time(),'',0,'Errrrrorrr')
         return gen
 
     @staticmethod
@@ -101,7 +105,7 @@ class Blockchain:
                     print("Data in block: ", data.data)
                     print("Number of votes: ",data.number_of_votes)
                     print("Merkle root: ", data.merkle)
-                    print("Difficulty: ", data.difficulty)
+                    print("Difficulty: ", data.DIFFICULTY)
                     print("Time stamp: ", data.timeStamp)
                     print("Previous hash: ", data.prevHash)
                     print("Block Hash: ", data.hash)
@@ -122,24 +126,33 @@ class Blockchain:
             print("Some error occured: ", e)
         return "Done"
 
+    def is_votepool_empty(self):
+    #--path to votefile
+        my_path = PROJECT_PATH.join('/temp/votefile.csv')
+    #--will return true if file exists and has no data
+        if os.path.isfile(os.path.expanduser(my_path)) and os.stat(os.path.expanduser(my_path)).st_size==0:
+            return True
+    #--False otherwise
+        return False
+
 
 class Block:
 
     #--basic structure of block that will be created when the block is generated
     #--the data in the block will be updated later and block will be mined then.
-    def __init__(self,height = 0,data = 'WARNING = SOME ERROR OCCURED',votes = 0,merkle = '0',difficulty = 0,time = 0,prevHash = '0',pow=0, hash = 'ERROR'):
+    def __init__(self,height = 0,data = 'WARNING = SOME ERROR OCCURED',votes = 0,merkle = '0',DIFFICULTY = 0,time = 0,prevHash = '0',pow=0, hash = 'ERROR'):
         self.height = height                    #len(Blockchain.chain-1)
         self.data = data                        #loadvote()
         self.number_of_votes = votes            #votecount per block
         self.merkle = merkle                    #calculateMerkleRoot()
-        self.difficulty = difficulty            #cryptography difficulty
+        self.DIFFICULTY = DIFFICULTY            #cryptography difficulty
         self.timeStamp = time                   #time()
         self.prevHash = prevHash                #previous block hash
         self.nonce = pow                        #proof of work function will find nonce
         self.hash = hash                        #hash of the current block
 
     #--The HEART OF BLOCKCHAIN - 'Proof-of-Work' function
-    def pow(self,zero=difficulty):
+    def pow(self,zero=DIFFICULTY):
         self.nonce=0
         while(self.calcHash()[:zero]!='0'*zero):
             self.nonce+=1
@@ -180,7 +193,7 @@ class Block:
         self.height = len(Blockchain.chain)                 #len(Blockchain.chain-1)
         self.data,self.number_of_votes = self.loadvote()    #loadvote() and return number of votes in current block
         self.merkle = self.merkleRoot()                     #MerkleRoot()
-        self.difficulty = difficulty                        # DIFFICULTY for the cryptographic puzzle
+        self.DIFFICULTY = DIFFICULTY                        #DIFFICULTY for the cryptographic puzzle
         self.timeStamp = time()                             #time()
         self.prevHash = Blockchain.chain[-1].calcHash()     #Calculate the hash of previous
         self.nonce = self.pow()                             #Calculate nonce
@@ -234,16 +247,21 @@ def votersignup():
 def voter():
 #--the voter is eligible if reached this page.
 #--hence his own keys will be generated.
-    voterkeys['sk'],voterkeys['pk'] = enc.rsakeys()         #--voter public/private key pair generated
+    voterkeys['sk'],voterkeys['pk'] = enc.rsakeys()         #--voter public/private key pair generated here
     choice = request.form['candidate']
+
 #--vote object created
     v1 = vote(invisiblevoter, int(choice))
+    vote.inc_votecount()
 
+#--votedata digitally signed and encrypted and sent to the temporary pool
     with open('temp/votefile.csv','a',newline="") as votefile:
         writer = csv.writer(votefile)
         encvotedata = v1.encryptvote()
         writer.writerow(encvotedata)
-    pp.connect_to_peer('192.168.0.135',9999,encvotedata)
+
+#--and broadcasted to other peers on the network
+    pp.send_to_peer('192.168.0.135',9999,encvotedata)
 
 #---Current frequency to add and mine new blocks is after generation of every 4 votes
     # if vote.count%4==0:
@@ -291,8 +309,12 @@ if __name__ == '__main__':
     #--after flask application stops
     #--load the remaining data in the temporary vote pool
     #--into a block and mine it
-    lastblock = Block().mineblock()
-    with open('temp/blockchain.dat','ab') as blockfile:
-        pickle._dump(lastblock,blockfile)
-    print("block added")
+    if not EVoting.is_votepool_empty():
+        lastblock = Block().mineblock()
+        with open('temp/blockchain.dat','ab') as blockfile:
+            pickle._dump(lastblock,blockfile)
+        print("block added")
+
     Blockchain.display()
+    print("\n\n\n", end = '')
+    print("Total number of votes:",vote.get_votecount())
