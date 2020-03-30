@@ -18,4 +18,3 @@ while True:
         c.send(bytes('ACKD','utf-8'))
     except BrokenPipeError:
         pass
-
