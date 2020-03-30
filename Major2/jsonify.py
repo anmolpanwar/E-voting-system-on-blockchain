@@ -6,3 +6,6 @@ def jsonify_votedata(votedatalist):
     #--into string...so we need to convert it back when recieved on the
     #--other end of the peer....
     return json.dumps(jsondict)
+
+if __name__=='__main__':
+    ls = []
