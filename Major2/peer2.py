@@ -1,7 +1,7 @@
 import socket
 import jsonify as js
 
-def connect_to_peer(host,port,datalist):
+def send_to_peer(host,port,datalist):
     c = socket.socket()
     c.connect((host,port))
     try:
