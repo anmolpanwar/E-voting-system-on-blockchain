@@ -13,35 +13,55 @@ import os
 import enc as enc
 import aes as aes
 import peer2 as pp
+import verification as ver
 
-#--Global variables
+#--<<Global variables>>
+
+#--cryptographic difficulty
 DIFFICULTY = 2
 
-BLOCK_TIME_LIMIT = 15 #--(seconds)
+#--frequency of mining of blocks seconds
+BLOCK_TIME_LIMIT = 20
 
+#--path of project files
 PROJECT_PATH = "~/Documents/PycharmProjects/python practice/Major2"
 
 class vote:
     count = 0
 
-    def __init__(self,hiddenvoterid,candidateID):
+    def __init__(self,hiddenvoterid,candidateID,voterpubkey):
         #--voterid hashed with PIN (ZKP)
         self.hiddenvoterid = hiddenvoterid
         self.candidate = candidateID
+        self.voterpubkey = voterpubkey
         self.time = time()
         self.votedata = [self.hiddenvoterid, self.candidate, self.time]
 
+
+    #--returns the voter's public key in pickle object as a byte value
+    def get_voter_pk(self):
+        return pickle._dumps(self.voterpubkey)
+
+
     #--vote gets a digital signature by voter's private key and gets signed by admin public key
     def encryptvote(self):
-        #--the data of the vote (in the votedata list) will be first hashed by SHA-256
-        #--then, the data will be converted into bytes and signed by voter's private key
-        #--and that hashed signature will be appended with votedata itself
+        """
+        the data of the vote (in the votedata list) will be first hashed by SHA-256
+        and then, the data will be converted into bytes and signed by voter's private key
+        and that hashed signature will be appended with votedata itself
+        """
         self.votedata.append(enc.sign(voterkeys['sk'], bytes(sha256(str('---'.join(str(x) for x in self.votedata)).encode('utf-8')).hexdigest(),'utf-8')))
 
-        #--now that whole data (the new votedata list) will be encrypted by AES encryption
-        #-- and the shared key of AES will be encrypted with admin's public key
-        #-- this data will be broadcasted and saved into the unconfirmed votepool and will be added in the block
-        return [aes.encrypt('***'.join(str(i) for i in self.votedata),voterkeys['aeskey']), enc.encrypt(Blockchain.adminpub,voterkeys['aeskey'])]
+        """
+        now that whole data (the new votedata list) will be encrypted by AES encryption
+        and the shared key of AES will be encrypted with admin's public key
+        this data will be broadcasted and saved into the unconfirmed votepool and will be added in the block
+        """
+        voterpk = self.get_voter_pk()
+
+        #--byte value of voter public key pickle object is converted to string
+        #--then added to list
+        return [str(voterpk)[2:-1], aes.encrypt('***'.join(str(i) for i in self.votedata),voterkeys['aeskey']), enc.encrypt(Blockchain.adminpub,voterkeys['aeskey'])]
 
     #--keep track of no. of votes
     @classmethod
@@ -55,6 +75,7 @@ class vote:
 
 
 class Blockchain:
+
     #--holds the info of chain of blocks as objects
     chain = []
 
@@ -127,19 +148,25 @@ class Blockchain:
         return "Done"
 
     def is_votepool_empty(self):
+
     #--path to votefile
         my_path = PROJECT_PATH.join('/temp/votefile.csv')
+
     #--will return true if file exists and has no data
         if os.path.isfile(os.path.expanduser(my_path)) and os.stat(os.path.expanduser(my_path)).st_size==0:
             return True
+
     #--False otherwise
         return False
 
 
 class Block:
 
-    #--basic structure of block that will be created when the block is generated
-    #--the data in the block will be updated later and block will be mined then.
+    """
+    The basic structure of block that will be created when the block is generated
+    the data in the block will be updated later and block will be mined then.
+    """
+
     def __init__(self,height = 0,data = 'WARNING = SOME ERROR OCCURED',votes = 0,merkle = '0',DIFFICULTY = 0,time = 0,prevHash = '0',pow=0, hash = 'ERROR'):
         self.height = height                    #len(Blockchain.chain-1)
         self.data = data                        #loadvote()
@@ -162,6 +189,11 @@ class Block:
     def calcHash(self):
         return sha256((str(str(self.data)+str(self.nonce)+str(self.timeStamp)+str(self.prevHash))).encode('utf-8')).hexdigest()
 
+    """
+    the vote data from the temporary pool will be loaded into the block
+    and after successful loading of data, the pool will be cleared and
+    will be reset for the next bunch of transactions
+    """
 
     @staticmethod
     def loadvote():
@@ -171,7 +203,7 @@ class Block:
             with open('temp/votefile.csv', mode = 'r') as votepool:
                 csvreader = csv.reader(votepool)
                 for row in csvreader:
-                    votelist.append({'Vote Data':row[0],'Key':row[1]})
+                    votelist.append({'Vote Data':row[1],'Key':row[2], 'Voter Public Key':row[0]})
                     votecount+=1
             return votelist,votecount
 
@@ -214,6 +246,8 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
+#--global variables for flask web application
+
 voterlist = [] #--to keep duplicates out
 invisiblevoter = '' #--global variable used to hide voter's identity
 voterkeys = {} #--voter's keys stored temporarily in this dictionary
@@ -226,14 +260,18 @@ def votersignup():
     voterkeys['aeskey'] = aes.get_private_key(voterid)
     global invisiblevoter
 
-#####-------ZERO KNOWLEDGE PROOF-------########
+    """
+    #####-------ZERO KNOWLEDGE PROOF-------########
+    <<<<<<implemented by hashing the voterID appended by PIN>>>>>>
+    """
     invisiblevoter = str(sha256((str(voterid)+str(pin)).encode('utf-8')).hexdigest())
 
 #--Voter re-signup check
     if voterid not in voterlist:
         voterlist.append(voterid)
 
-#--If condition satisfied, voter can be allowed to vote and his data will be written on the database
+#--If condition satisfied, voter can be allowed to vote
+#--his data will be written on the database
         with open('temp/VoterID_Database.txt', 'a') as voterdata:
             voterdata.write(str(sha256(str(voterid).encode('utf-8')).hexdigest()))
             voterdata.write("\n")
@@ -251,7 +289,7 @@ def voter():
     choice = request.form['candidate']
 
 #--vote object created
-    v1 = vote(invisiblevoter, int(choice))
+    v1 = vote(invisiblevoter, int(choice), voterkeys['pk'])
     vote.inc_votecount()
 
 #--votedata digitally signed and encrypted and sent to the temporary pool
@@ -263,12 +301,18 @@ def voter():
 #--and broadcasted to other peers on the network
     pp.send_to_peer('192.168.0.135',9999,encvotedata)
 
-#---Current frequency to add and mine new blocks is after generation of every 4 votes
-    # if vote.count%4==0:
-    #     blockx = Block().mineblock()
-    #     with open('temp/blockchain.dat','ab') as blockfile:
-    #         pickle._dump(blockx,blockfile)
-    #     print("block added")
+    """
+    This method mines new blocks after generation of every 4 votes
+    Uncomment this method and comment the 'mineblocktimer()' method 
+    to switch to 'vote count block mining' method.
+    
+    if vote.count%4==0:
+        blockx = Block().mineblock()
+        with open('temp/blockchain.dat','ab') as blockfile:
+            pickle._dump(blockx,blockfile)
+        print("block added")
+    """
+
     return redirect('/thanks')
 
 
@@ -318,3 +362,6 @@ if __name__ == '__main__':
     Blockchain.display()
     print("\n\n\n", end = '')
     print("Total number of votes:",vote.get_votecount())
+    print(EVoting.chain)
+
+    print(ver.verify_blockchain(EVoting.chain))
