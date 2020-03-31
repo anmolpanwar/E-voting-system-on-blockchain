@@ -13,7 +13,7 @@ while True:
     try:
         c,addr = s.accept()
         print('conn esbd: ',addr)
-        msg = c.recv(1024).decode()
+        msg = c.recv(8192).decode()
         print('Pudipeddi mac says:',msg)
         c.send(bytes('ACKD','utf-8'))
     except BrokenPipeError:
