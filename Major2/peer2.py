@@ -1,7 +1,7 @@
 import socket
 import jsonify as js
 
-def send_to_peer(host,port,datalist):
+def send_votedata_to_peer(host,port,datalist):
     c = socket.socket()
     c.connect((host,port))
     try:
@@ -12,3 +12,7 @@ def send_to_peer(host,port,datalist):
 
     except KeyboardInterrupt:
         pass
+
+
+def broadcast_block(host,port,blockdata):
+    pass
