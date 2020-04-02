@@ -14,6 +14,7 @@ import enc as enc
 import aes as aes
 import peer2 as pp
 import verification as ver
+import takeyourkeyhome as tykh
 
 #--<<Global variables>>
 
@@ -91,13 +92,14 @@ class Blockchain:
         print('Blockchain initialized')
 
     @staticmethod
-    #--genesis block creation has nothing to do with blockchain class...
-    #--...but has to be created when blockchain is initialized
+    #--genesis block creation has nothing to do with blockchain class,
+    #--..but has to be created when blockchain is initialized
     def genesis():
 
         #--genesis block created
         gen = Block(0,"Let the real democracy rule!!",0, sha256(str("Let the real democracy rule!!").encode('utf-8')).hexdigest(), DIFFICULTY, time(),'',0,'Errrrrorrr')
         return gen
+
 
     @staticmethod
     def addGenesis():
@@ -113,12 +115,13 @@ class Blockchain:
             pickle._dump(genesisblock, genfile)
         print("Genesis block added")
 
+
     @staticmethod
     def display():
         #--print the information of blocks of the blockchain in the console
         try:
             with open('temp/blockchain.dat','rb') as blockfile:
-                for i in range(len(EVoting.chain)):
+                for block in range(len(EVoting.chain)):
                     data = pickle._load(blockfile)
 
                     #--print all data of a block
@@ -147,6 +150,7 @@ class Blockchain:
             print("Some error occured: ", e)
         return "Done"
 
+    #--to check if whether the data pool has some data or not
     def is_votepool_empty(self):
 
     #--path to votefile
@@ -158,6 +162,35 @@ class Blockchain:
 
     #--False otherwise
         return False
+
+
+    """
+    After regular intervals, we need to verify that the blockchain
+    is indeed valid at all points. And no data has been tampered - EVEN IN ONE SINGLE COPY
+    (if not for the whole network).
+    We do that by verifying the chain of block hashes.
+    """
+    @classmethod
+    def verify_chain(cls):
+        index, conclusion = ver.sync_blocks(cls.chain)
+        if not conclusion:
+            if len(str(index))==1:
+                error_msg ="""+-----------------------------------------+
+|                                         |
+| Somebody messed up at Block number - {}  |
+|                                         |
++-----------------------------------------+""".format(index)
+
+            else:
+                error_msg ="""+-----------------------------------------+
+|                                         |
+| Somebody messed up at Block number - {} |
+|                                         |
++-----------------------------------------+""".format(index)
+
+            raise Exception(error_msg)
+
+        return True
 
 
 class Block:
@@ -257,6 +290,7 @@ voterkeys = {} #--voter's keys stored temporarily in this dictionary
 def votersignup():
     voterid = request.form['voterid']
     pin = request.form['pin']
+    voterkeys['pin'] = pin
     voterkeys['aeskey'] = aes.get_private_key(voterid)
     global invisiblevoter
 
@@ -287,6 +321,7 @@ def voter():
 #--hence his own keys will be generated.
     voterkeys['sk'],voterkeys['pk'] = enc.rsakeys()         #--voter public/private key pair generated here
     choice = request.form['candidate']
+    tykh.generate_QR(voterkeys['sk'],voterkeys['pin'])
 
 #--vote object created
     v1 = vote(invisiblevoter, int(choice), voterkeys['pk'])
@@ -299,7 +334,7 @@ def voter():
         writer.writerow(encvotedata)
 
 #--and broadcasted to other peers on the network
-    pp.send_to_peer('192.168.0.135',9999,encvotedata)
+    pp.send_votedata_to_peer('192.168.0.135',9999,encvotedata)
 
     """
     This method mines new blocks after generation of every 4 votes
@@ -311,6 +346,12 @@ def voter():
         with open('temp/blockchain.dat','ab') as blockfile:
             pickle._dump(blockx,blockfile)
         print("block added")
+    """
+    pass
+
+    """
+    Now the QR code containing the information about your PIN
+    and private key is printed on the thank you page.
     """
 
     return redirect('/thanks')
@@ -363,5 +404,3 @@ if __name__ == '__main__':
     print("\n\n\n", end = '')
     print("Total number of votes:",vote.get_votecount())
     print(EVoting.chain)
-
-    print(ver.verify_blockchain(EVoting.chain))
