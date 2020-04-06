@@ -8,6 +8,7 @@ import pickle
 import simplejson as json
 import threading as thr
 import os
+import shutil
 
 #--project files
 import enc as enc
@@ -154,7 +155,7 @@ class Blockchain:
     def is_votepool_empty(self):
 
     #--path to votefile
-        my_path = PROJECT_PATH.join('/temp/votefile.csv')
+        my_path = PROJECT_PATH + '/temp/votefile.csv'
 
     #--will return true if file exists and has no data
         if os.path.isfile(os.path.expanduser(my_path)) and os.stat(os.path.expanduser(my_path)).st_size==0:
@@ -321,7 +322,7 @@ def voter():
 #--hence his own keys will be generated.
     voterkeys['sk'],voterkeys['pk'] = enc.rsakeys()         #--voter public/private key pair generated here
     choice = request.form['candidate']
-    tykh.generate_QR(voterkeys['sk'],voterkeys['pin'])
+
 
 #--vote object created
     v1 = vote(invisiblevoter, int(choice), voterkeys['pk'])
@@ -360,8 +361,18 @@ def voter():
 @app.route('/thanks', methods = ['GET'])
 def thank():
     #--thank you page
-    return render_template('thanks.html')
+    qrname = tykh.generate_QR(voterkeys['sk'],voterkeys['pin'])
+    return render_template('thanks.html', qrcode = qrname)
 
+
+#--delete the folder containing the data and make a fresh one by the same name
+def clear_garbage():
+    folder = PROJECT_PATH + '/temp'
+    shutil.rmtree(os.path.expanduser(folder))
+    if not os.path.exists(os.path.expanduser(folder)):
+        os.makedirs(os.path.expanduser(folder))
+
+clear_garbage()
 
 #--Blockchain initialized and Genesis block added
 EVoting = Blockchain()
@@ -404,3 +415,4 @@ if __name__ == '__main__':
     print("\n\n\n", end = '')
     print("Total number of votes:",vote.get_votecount())
     print(EVoting.chain)
+
