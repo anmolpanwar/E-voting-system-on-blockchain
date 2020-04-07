@@ -14,7 +14,7 @@ An E-voting system based on blockchain, build from scratch.
  # Signing transactions
  In this program we create transactions by manually giving the addresses of both the sender and receiver along with the amount and this information along with the current timestamp gets stored in a pool of pending transactions. Then the transactions from that pool (a list of transactions in this program) are picked up and hashed using the hashing algorithm SHA-256 and then by RIPEMD-160 and a merkle root structure is created.
  
- # Implementing Proof-of-Work (PoW)
+ ## Implementing Proof-of-Work (PoW)
  Proof of work is a brilliant way to ensure the integrity of the data. The algorithm dictates that - a node must go through a large amount of computational work in order to add the block to the blockchain because once added the data in the block can never be modified. Hence, to prevent an attacked from injecting a fraudulent database state (modifying the data and making everyone believe and follow that database state) because in order to do so, the attacker must go through a large amount of computational work to change one block, and then the one that follows it and then the next one and so on. This is practically impossible to surpass the work done by honest nodes collectively (versus the attacker himself) unless the attacker possesses more than 50% of the computational resources.
  
  This is achieved by scanning for a value (a number) that when appended at the end of the data and hashed with SHA-256 gives the output with a certain number of zeroes at the beginning of the hash. So we have no option other than just "guessing and checking" the hash again and again after recursively changing the number and checking the hash untill we hit the target hash.
