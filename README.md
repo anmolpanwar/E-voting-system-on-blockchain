@@ -22,8 +22,8 @@ An E-voting system based on blockchain, build from scratch.
  This is known as Proof of Work. It proves that a node underwent a good amount of work and spent a considerable amount of time to find that number to achieve the target hash.
 
 
- For a practical scenario - the length of the output hash of a SHA256 algorithm is 256 bits. The bitcoin protocol dictates that the hash for each block must begin with AT LEAST 30 zeroes. This means we have to check AT MOST 2^30 possible outcomes and an AVERAGE of 2^29 outcomes to output the desired hash.
- This probability is close to 1 in a Billion and for an average computer, this would take approximately 15 minutes to compute and close to 10 minutes for an ASIC (Application Specific Integrated Circuits) device; a device specially designed to compute hashes and nothing else.
- If the average time of adding a new block gets lesser, the difficulty is increased by the bitcoin protocol itself.
+ For a practical scenario - the length of the output hash of a SHA256 algorithm is 256 bits. The bitcoin protocol (by default) dictates that the hash for each block must begin with AT LEAST 30 zeroes (however, that number of zeros is regularly scaled up or down so that mining a new block takes about 10 minutes on an average). This means we have to check AT MOST 2^30 possible outcomes and an AVERAGE of 2^29 outcomes to output the desired hash.
+ This probability is close to 1 in a Billion and for an average computer, this would take several minutes to compute but the devices that are especially designed to compute hashes and nothing else can increase the efficiency greatly and thus all the miners collectively maintain an average time of 10 minutes. Those devices are known as ASIC (Application Specific Integrated Circuits) device. They consume a large amount of power and thus PoW is a very power hungry consensus algorithm.
 
+Blockchain really is a miraculous technology but still there are reasons that steer it away from widespread adoption. To know more...
 Refer to my article - https://medium.com/@anmolpanwar8/heres-why-blockchain-is-not-yet-ready-to-gain-traction-ac92c323d84d
