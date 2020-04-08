@@ -14,7 +14,7 @@ An E-voting system based on blockchain, build from scratch.
  # Signing transactions
  In this program we create transactions by manually giving the addresses of both the sender and receiver along with the amount and this information along with the current timestamp gets stored in a pool of pending transactions. Then the transactions from that pool (a list of transactions in this program) are picked up and hashed using the hashing algorithm SHA-256 and then by RIPEMD-160 and a merkle root structure is created.
  
- ## Implementing Proof-of-Work (PoW)
+ # Implementing Proof-of-Work (PoW)
  Proof of work is a brilliant way to ensure the integrity of the data. The algorithm dictates that - a node must go through a large amount of computational work in order to add the block to the blockchain because once added the data in the block can never be modified. Hence, to prevent an attacked from injecting a fraudulent database state (modifying the data and making everyone believe and follow that database state) because in order to do so, the attacker must go through a large amount of computational work to change one block, and then the one that follows it and then the next one and so on. This is practically impossible to surpass the work done by honest nodes collectively (versus the attacker himself) unless the attacker possesses more than 50% of the computational resources.
  
  This is achieved by scanning for a value (a number) that when appended at the end of the data and hashed with SHA-256 gives the output with a certain number of zeroes at the beginning of the hash. So we have no option other than just "guessing and checking" the hash again and again after recursively changing the number and checking the hash untill we hit the target hash.
@@ -22,8 +22,8 @@ An E-voting system based on blockchain, build from scratch.
  This is known as Proof of Work. It proves that a node underwent a good amount of work and spent a considerable amount of time to find that number to achieve the target hash.
 
 
- For a practical scenario - the length of the output hash of a SHA256 algorithm is 256 bits. The bitcoin protocol dictates that the hash for each block must begin with AT LEAST 30 zeroes. This means we have to check AT MOST 2^30 possible outcomes and an AVERAGE of 2^29 outcomes to output the desired hash.
- This probability is close to 1 in a Billion and for an average computer, this would take approximately 15 minutes to compute and close to 10 minutes for an ASIC (Application Specific Integrated Circuits) device; a device specially designed to compute hashes and nothing else.
- If the average time of adding a new block gets lesser, the difficulty is increased by the bitcoin protocol itself.
+ For a practical scenario - the length of the output hash of a SHA256 algorithm is 256 bits. The bitcoin protocol (by default) dictates that the hash for each block must begin with AT LEAST 30 zeroes (however, that number of zeros is regularly scaled up or down so that mining a new block takes about 10 minutes on an average). This means we have to check AT MOST 2^30 possible outcomes and an AVERAGE of 2^29 outcomes to output the desired hash.
+ This probability is close to 1 in a Billion and for an average computer, this would take several minutes to compute but the devices that are especially designed to compute hashes and nothing else can increase the efficiency greatly and thus all the miners collectively maintain an average time of 10 minutes. Those devices are known as ASIC (Application Specific Integrated Circuits) device. They consume a large amount of power and thus PoW is a very power hungry consensus algorithm.
 
+Blockchain really is a miraculous technology but still there are reasons that steer it away from widespread adoption. To know more...
 Refer to my article - https://medium.com/@anmolpanwar8/heres-why-blockchain-is-not-yet-ready-to-gain-traction-ac92c323d84d
