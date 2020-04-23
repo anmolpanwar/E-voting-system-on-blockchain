@@ -1,13 +1,13 @@
 from hashlib import *
 import time
-zeros = 2
+zeros = 5
 
 class transaction:
     def __init__(self,fromadd,toadd,amount):
         self.fromadd=fromadd
         self.toadd=toadd
         self.amount=amount
-        self.time = time.strftime('%d/%m/%Y - %H:%M:%S')
+        self.time = time.time()
 
         self.transobj = {'Sender_Address':self.fromadd,'Recipient_Address':self.toadd,'Amount':self.amount,'Time':self.time}
         Blockchain.pendingtrans.append(self.transobj)
@@ -48,7 +48,7 @@ class Blockchain:
         self.chain = []
 
     def genesis(self):
-        return Block(time.strftime('%d/%m/%Y - %H:%M:%S'),'data in genesis')
+        return Block(time.time(),'data in genesis')
 
     def addGenesis(self): #addBlock vale method me if length of chain is 0 --> add genesis block se ho sakta tha but...
         self.chain.append(self.genesis()) #baar baar block add karne pe ek if condition bar bar execute hoti faltu me
@@ -79,8 +79,8 @@ class Blockchain:
 
 chain = Blockchain()
 chain.addGenesis()
-b2 = Block(time.strftime('%d/%m/%Y - %H:%M:%S'),'some data in 2nd block')
-b3 = Block(time.strftime('%d/%m/%Y - %H:%M:%S'),'data in 3rd block')
+b2 = Block(time.time(),'some data in 2nd block')
+b3 = Block(time.time(),'data in 3rd block')
 chain.addBlock(b2)
 chain.addBlock(b3)
 
