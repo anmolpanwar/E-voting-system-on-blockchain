@@ -2,7 +2,8 @@ import Crypto
 from Crypto.PublicKey import RSA
 from Crypto import Random
 import base64
-
+import pickle
+import pdb
 
 #Creating Private Key of 1024 bits and Public Key
 def rsakeys():
@@ -37,11 +38,9 @@ def verify(publickey,data,sign):
 
 
 if __name__=='__main__':
-    rpriv,rpub = rsakeys()
-    spriv,spub = rsakeys()
-    has = 'eee9ca050b625c9a8206beb29e5687d915f70aaa061993d9ea5bdf2041c66a26'
-    rl = bytes(has,'utf-8')
-    signed = sign(spriv,rl)
-    print(signed)
+    sk,pk = rsakeys()
+    msg = b'dafs'
+    locked = sign(sk,msg)
+    print(locked)
+    print(type(locked))
 
-    print(verify(spub,rl,signed))
