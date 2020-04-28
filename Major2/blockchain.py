@@ -338,9 +338,9 @@ def voter():
     pp.send_votedata_to_peer('192.168.0.135',9999,encvotedata)
 
     """
-    This method mines new blocks after generation of every 4 votes
+    This method mines new blocks after generation of every 2 votes
     Uncomment this method and comment the 'mineblocktimer()' method 
-    to switch to 'vote count block mining' method.
+    to switch to 'vote count block mining' method - where block will be mined after 2 votes are generated and not on regular time intervals.
     """
 
     if vote.count%2==0:
@@ -395,8 +395,8 @@ if __name__ == '__main__':
     clear_garbage()
 
 
-    #--thread to mine blocks periodically initialised
-    # mineblocktimer()
+    #--thread to mine blocks periodically initialised. Now blocks are mined in background at regular intervals. Like in bitcoin, at the rate of 1 block / 10 minutes on an average
+    mineblocktimer()
 
 
     #--Blockchain initialized and Genesis block added
