@@ -310,7 +310,7 @@ def votersignup():
         with open('temp/VoterID_Database.txt', 'a') as voterdata:
             voterdata.write(str(sha256(str(voterid).encode('utf-8')).hexdigest()))
             voterdata.write("\n")
-        return render_template('trial.html')
+        return render_template('vote.html')
 #--If not, the voter will be redirected to a different page.
     else:
         return render_template('oops.html')

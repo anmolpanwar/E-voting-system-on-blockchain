@@ -1,23 +1,59 @@
+<!DOCTYPE html>
 <html>
-	<style>
-		.content {
-		  max-width: 500px;
-		  margin: auto;
-		}
-	</style>
-	<title>
-	E-ballot
-	</title>
-		<head><h1 align="center">Hi!!</h1>
-		<h3 align="center">Welcome to new voting system</h3></head>
-	<body>
-		<div class="content">
-			<center>Choose candidate: </center> <br>
-				<form action = "/vote" method="POST" id = "form1">
-					1. <button type= "radio" name = "candidate" value="1"> BJP </button><br>
-					2. <button type= "radio" name = "candidate" value="2"> Congress </button> <br>
-					3. <button type= "radio" name = "candidate" value="3"> NOTA </button>
-				</form>
-		</div>
-	</body>
-</html>
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/vote.css') }}">
+</head>
+
+<body style = "zoom:96.6%">
+  <form action = "/vote" method="POST" id = "form1">
+<!-- Hover #1 -->
+<div class="box-1">
+  <label class="labl">
+  <input type="radio" name = "candidate" value="1">
+  <br><br><br>
+  <div class="btn btn-one">
+    <span>BHARTIYA JANTA PARTY</span>
+  </div class = "imge">
+
+  <br><br><br>
+</label>
+<div>
+    <img src="{{url_for('static', filename='image.png')}}" align="right" width="300" height="306">
+  </div>
+</div> 
+<!-- Hover #2 -->
+<div class="box-2">
+  <label class="labl">
+  <input type="radio" name = "candidate" value="2">
+  <br><br><br>
+  <div class="btn btn-three">
+    <span>CONGRESS</span>
+    
+  </div>
+  <br><br><br>
+</label>
+<div>
+    <img src="{{url_for('static', filename='cong.png')}}" align="right" width="300" height="300">
+  </div>
+</div>
+
+<!-- Hover #3 -->
+<div class="box-3">
+  <label class="labl">
+    <br><br><br>
+      <input type="radio" name = "candidate" value="3">
+
+  <div class="btn btn-two">
+    <span> NONE OF THE ABOVE </span>
+  </div>
+  <br><br>
+</label>
+  <div>
+    <img src="{{url_for('static', filename='nota.png')}}" align="right" width="300" height="300">
+  </div>
+</div>
+<div class = "box-4">
+<button class="btn btn-four">C O N F I R M</button>
+</div>
+</form>
+</body>
