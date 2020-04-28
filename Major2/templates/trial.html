@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/vote.css') }}">
+</head>
+
+<body style = "zoom:96.6%">
+  <form action = "/vote" method="POST" id = "form1">
+<!-- Hover #1 -->
+<div class="box-1">
+  <label class="labl">
+  <input type="radio" name = "candidate" value="1">
+  <br><br><br>
+  <div class="btn btn-one">
+    <span>BHARTIYA JANTA PARTY</span>
+  </div class = "imge">
+
+  <br><br><br>
+</label>
+<div>
+    <img src="{{url_for('static', filename='image.png')}}" align="right" width="300" height="306">
+  </div>
+</div> 
+<!-- Hover #2 -->
+<div class="box-2">
+  <label class="labl">
+  <input type="radio" name = "candidate" value="2">
+  <br><br><br>
+  <div class="btn btn-three">
+    <span>CONGRESS</span>
+    
+  </div>
+  <br><br><br>
+</label>
+<div>
+    <img src="{{url_for('static', filename='cong.png')}}" align="right" width="300" height="300">
+  </div>
+</div>
+
+<!-- Hover #3 -->
+<div class="box-3">
+  <label class="labl">
+    <br><br><br>
+      <input type="radio" name = "candidate" value="3">
+
+  <div class="btn btn-two">
+    <span> NONE OF THE ABOVE </span>
+  </div>
+  <br><br>
+</label>
+  <div>
+    <img src="{{url_for('static', filename='nota.png')}}" align="right" width="300" height="300">
+  </div>
+</div>
+<div class = "box-4">
+<button class="btn btn-four">C O N F I R M</button>
+</div>
+</form>
+</body>

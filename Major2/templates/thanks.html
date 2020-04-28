@@ -5,10 +5,10 @@
 		  max-width: 500px;
 		  align-content: center;
 		  align-items: right;
-		  margin: 0px 0px 0px 10px;
+		  margin: 0px 0px 0px 17px;
 		}
 		body{
-			background-image: url('{{url_for('static', filename='shh.JPG')}}');
+			background-image: url('{{url_for('static', filename='shhhhhh.JPG')}}');
 		}
 	</style>
 	<head>
@@ -20,10 +20,10 @@
 				<h3 align="center"><br><br>Thanks for your vote!</h3>
 				<h2><center>Scan this QR Code</center></h2><br>
 				<center>This QR Code has sensitive information about your identity.</center>
-				<center><b>Do NOT share this with anyone.</b></center> 
+				<center><b><h3>Do NOT share this with anyone.</h3></b></center> 
 				<center>You will need it, in case you might want to verify your vote integrity.</center>
 				<br>
-				<img src="{{url_for('static', filename='qr.jpg')}}" alt = "QR Code couldn't be loaded. Please contact the administrator." align="center" height="500" width="500"/>
+				<img src="{{url_for('static', filename=qrcode)}}" alt = "QR Code couldn't be loaded. Please contact the administrator." align="center" height="500" width="500"/>
 				<center><br><button type="Submit" value="Submit">
 					Back to home page
 				</button></center>

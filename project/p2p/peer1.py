@@ -1,4 +1,7 @@
 import socket
+import simplejson as json
+
+PROJECT_PATH = ''
 
 s = socket.socket()
 print('socket created')
@@ -14,6 +17,8 @@ while True:
         c,addr = s.accept()
         print('conn esbd: ',addr)
         msg = c.recv(8192).decode()
+        json.loads(msg)
+
         print('Pudipeddi mac says:',msg)
         c.send(bytes('ACKD','utf-8'))
     except BrokenPipeError:

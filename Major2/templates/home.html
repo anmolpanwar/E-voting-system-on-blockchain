@@ -1,56 +1,19 @@
 <!DOCTYPE html>
-<html>
-<!-- <header><link rel="stylesheet" type="text/css" href="uu/semantic.min.css">
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-<script src="uu/semantic.min.js"></script></header> -->
-<style>
-	.content
-		{
-			max-width: 500px;
-			margin: auto;
-			font-size: 18px;
-		}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>َE-Voting </title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+  </head>
+  <body style = "zoom:120%">
 
-	label
-		{
-			display: inline-block;
-			width: 200px;
-			margin-right:30px;
-			text-align:right;
-		}
-
-	input{
-		}
-
-	fieldset
-		{	
-			width:500px;
-			margin:0px auto;
-		}
-</style>
-<title>E - Voting Portal</title>
-<head>
-	<h1 align="center">Welcome to the new Voting System</h1>
-</head>
-<body>
-	<div class="content">
-		<form action="/signup" method="POST" id="signup">
-			<fieldset>
-				<legend><center><h3>Voter Sign up</h3></center></legend><br>
-				<label for='voterid'>Voter ID: </label>
-				<input type="text" name="voterid" placeholder="Voter ID" minlength="" required size="30"> <br><br><br>
-				<label for = 'pin'>Choose a PIN/Password: </label>
-				<input type="password" name="pin" maxlength="6" placeholder="4-6 digit PIN/Password" id="password1" minlength="4" oninput="setPasswordConfirmValidity();" required size="30"><br><br><br>
-				<label for = 'pin2'>Confirm PIN/Password:</label>
-				<input type="password" name="pin2" maxlength="6" placeholder="Confirm password" id="password2" minlength="4" oninput="setPasswordConfirmValidity();" required size="30"><br>
-				<br>
-			</fieldset>
-			<br>
-			<center><button type="submit" value="submit">Proceed to Vote</button></center>
-			<script>
+<form class="box" action="/signup" method="POST" id="signup">
+  <h1>Voter Sign Up</h1>
+  <input type="text" name="voterid" placeholder="VoterID">
+  <input type="password" name="pin" id = "password1" placeholder="4-6 PIN/Password" maxlength="6" minlength="4" oninput="setPasswordConfirmValidity();">
+  <input type="password" name="pin2" id="password2" placeholder="Confirm PIN/Password" maxlength="6" minlength="4" oninput="setPasswordConfirmValidity();">
+  <input type="submit" name="Submit" value="Submit">
+  <script>
 			    function setPasswordConfirmValidity(str) {
 			        const password1 = document.getElementById('password1');
 			        const password2 = document.getElementById('password2');
@@ -63,8 +26,9 @@
 			        console.log('password2 customError ', document.getElementById('password2').validity.customError);
 			        console.log('password2 validationMessage ', document.getElementById('password2').validationMessage);
     }
-			</script>
-		</form>
-	</div>
-</body>
+  </script>
+</form>
+
+
+  </body> 
 </html>
