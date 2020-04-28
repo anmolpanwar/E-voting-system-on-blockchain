@@ -1,6 +1,7 @@
 import qrcode
 import pickle as pk
 import time
+import os,glob
 
 def generate_QR(data,pin):
     key = sk_to_data(data,pin)
@@ -9,9 +10,15 @@ def generate_QR(data,pin):
     qr.make(fit=True)
 
     img = qr.make_image(fill_color="black", back_color="white")
+    cleardata()
     qr = "qr"+str(time.time())+".png"
     img.save('static/'+qr)
     return qr
+
+def cleardata():
+    for filename in glob.glob("static/qr*"):
+        os.remove(filename)
+
 
 def sk_to_data(privatekey,pin):
     key = pk._dumps(privatekey)
