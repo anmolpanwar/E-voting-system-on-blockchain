@@ -26,8 +26,8 @@ Similarly the data gets accumulated in the temporary pool by other peers as well
  For a practical scenario - the length of the output hash of a SHA256 algorithm is 256 bits. The bitcoin protocol (by default) dictates that the hash for each block must begin with AT LEAST 30 zeroes (however, that number of zeros is regularly scaled up or down so that mining a new block takes about 10 minutes on an average). This means we have to check AT MOST 2^30 possible outcomes and an AVERAGE of 2^29 outcomes to output the desired hash.
  This probability is close to 1 in a Billion and for an average computer, this would take several minutes to compute but the devices that are especially designed to compute hashes and nothing else can increase the efficiency greatly and thus all the miners collectively maintain an average time of 10 minutes. Those devices are known as ASIC (Application Specific Integrated Circuits) device. They consume a large amount of power and thus PoW is a very power hungry consensus algorithm.
 
-Blockchain really is a miraculous technology but still there are reasons that steer it away from widespread adoption. To know more, refer to my article @ medium
-#### Here - https://medium.com/@anmolpanwar8/heres-why-blockchain-is-not-yet-ready-to-gain-traction-ac92c323d84d  
+> Blockchain really is a miraculous technology but still there are reasons that steer it away from widespread adoption. To know more, refer to my article @ medium
+> #### Here - https://medium.com/@anmolpanwar8/heres-why-blockchain-is-not-yet-ready-to-gain-traction-ac92c323d84d  
 <br>
 
 ## Instructions  
