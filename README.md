@@ -27,7 +27,11 @@ An E-voting system based on blockchain, build from scratch.
 
 Blockchain really is a miraculous technology but still there are reasons that steer it away from widespread adoption. To know more, refer to my article @ medium
 #### Here - https://medium.com/@anmolpanwar8/heres-why-blockchain-is-not-yet-ready-to-gain-traction-ac92c323d84d  
+<br>
 
+## Instructions  
+### \[Note: The project files are in the folder - Major2. Rest all the files are experiment and a part of 'rough work', not related to project.]
+<br>
 
 **Directory structure for the project**  
 | - - **\<Project folder name\>/**  
