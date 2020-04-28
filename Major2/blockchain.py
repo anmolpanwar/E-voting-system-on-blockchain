@@ -13,14 +13,16 @@ import shutil
 #--project files
 import enc as enc
 import aes as aes
-import peer2 as pp
+import broadcast as pp
 import verification as ver
 import takeyourkeyhome as tykh
+import election_results as er
+import bar_chart as bc
 
 #--<<Global variables>>
 
 #--cryptographic difficulty
-DIFFICULTY = 2
+DIFFICULTY = 3
 
 #--frequency of mining of blocks seconds
 BLOCK_TIME_LIMIT = 20
@@ -63,7 +65,7 @@ class vote:
 
         #--byte value of voter public key pickle object is converted to string
         #--then added to list
-        return [str(voterpk)[2:-1], aes.encrypt('***'.join(str(i) for i in self.votedata),voterkeys['aeskey']), enc.encrypt(Blockchain.adminpub,voterkeys['aeskey'])]
+        return [str(voterpk)[2:-1], str(aes.encrypt('***'.join(str(i) for i in self.votedata),voterkeys['aeskey']))[2:-1], str(enc.encrypt(Blockchain.adminpub,voterkeys['aeskey']))[2:-1]]
 
     #--keep track of no. of votes
     @classmethod
@@ -80,13 +82,12 @@ class Blockchain:
 
     #--holds the info of chain of blocks as objects
     chain = []
-
+    adminpriv,adminpub = enc.rsakeys()
     #--administrator public/private key pair generated along with the blockchain initialization.
     #--the public key of admin will be used to encrypt the vote data for confidentiality
-    adminpriv,adminpub = enc.rsakeys()
-    with open('temp/Adminkeys.txt', 'wb') as adminkeyfile:
-        pickle._dump(adminpriv,adminkeyfile)
-        pickle._dump(adminpub,adminkeyfile)
+    # with open('temp/Adminkeys.txt', 'wb') as adminkeyfile:
+    #     pickle._dump(adminpriv,adminkeyfile)
+    #     pickle._dump(adminpub,adminkeyfile)
 
     def __init__(self):
         self.addGenesis()
@@ -237,7 +238,7 @@ class Block:
             with open('temp/votefile.csv', mode = 'r') as votepool:
                 csvreader = csv.reader(votepool)
                 for row in csvreader:
-                    votelist.append({'Vote Data':row[1],'Key':row[2], 'Voter Public Key':row[0]})
+                    votelist.append({'Voter Public Key':row[0], 'Vote Data':row[1],'Key':row[2]})
                     votecount+=1
             return votelist,votecount
 
@@ -310,7 +311,7 @@ def votersignup():
         with open('temp/VoterID_Database.txt', 'a') as voterdata:
             voterdata.write(str(sha256(str(voterid).encode('utf-8')).hexdigest()))
             voterdata.write("\n")
-        return render_template('vote.html')
+        return render_template('trial.html')
 #--If not, the voter will be redirected to a different page.
     else:
         return render_template('oops.html')
@@ -341,13 +342,14 @@ def voter():
     This method mines new blocks after generation of every 4 votes
     Uncomment this method and comment the 'mineblocktimer()' method 
     to switch to 'vote count block mining' method.
-    
-    if vote.count%4==0:
+    """
+
+    if vote.count%2==0:
         blockx = Block().mineblock()
         with open('temp/blockchain.dat','ab') as blockfile:
             pickle._dump(blockx,blockfile)
         print("block added")
-    """
+
     pass
 
     """
@@ -365,26 +367,18 @@ def thank():
     return render_template('thanks.html', qrcode = qrname)
 
 
-#--delete the folder containing the data and make a fresh one by the same name
+#--delete the folder containing the application data and make a fresh one by the same name
 def clear_garbage():
     folder = PROJECT_PATH + '/temp'
     shutil.rmtree(os.path.expanduser(folder))
     if not os.path.exists(os.path.expanduser(folder)):
         os.makedirs(os.path.expanduser(folder))
 
-clear_garbage()
-
-#--Blockchain initialized and Genesis block added
-EVoting = Blockchain()
-
-#--Created a file for voter database storage
-f = open('temp/VoterID_Database.txt', 'w+')
-f.close()
 
 #--inline methode that runs parallel to the program
-def inlinetimer():
+def inlinetimer(bt):
     while True:
-        sleep(BLOCK_TIME_LIMIT)        #--global variable
+        sleep(bt)        #--global variable
         #--sleep for 15 seconds --> mine a block --> repeat
         blockx = Block().mineblock()
         with open('temp/blockchain.dat','ab') as blockfile:
@@ -393,13 +387,26 @@ def inlinetimer():
 
 #--seperate thread running in the background
 def mineblocktimer():
-    timerthread = thr.Thread(target=inlinetimer)
+    timerthread = thr.Thread(target=inlinetimer, args=(BLOCK_TIME_LIMIT,))
     timerthread.start()
-
-mineblocktimer()
 
 
 if __name__ == '__main__':
+
+    clear_garbage()
+
+
+    #--thread to mine blocks periodically initialised
+    # mineblocktimer()
+
+
+    #--Blockchain initialized and Genesis block added
+    EVoting = Blockchain()
+
+    #--Created a file for voter database storage
+    f = open('temp/VoterID_Database.txt', 'w+')
+    f.close()
+
     #--run flask application
     app.run(port = 5000)
     #--after flask application stops
@@ -415,4 +422,15 @@ if __name__ == '__main__':
     print("\n\n\n", end = '')
     print("Total number of votes:",vote.get_votecount())
     print(EVoting.chain)
-
+    myresult = er.get_result(EVoting.adminpriv)
+    print(myresult)
+    with open('temp/result.csv','r',newline="") as votefile:
+        reader = csv.reader(votefile)
+        reader = [int(x) for x in list(reader)[0]]
+    myresult.extend(reader)
+    print(myresult)
+    bar = []
+    bar.append(myresult.count(1))
+    bar.append(myresult.count(2))
+    bar.append(myresult.count(3))
+    bc.show(bar)
