@@ -1,6 +1,5 @@
 #--libraries
 from hashlib import *
-import cryptography
 from time import time,sleep
 from flask import *
 import csv
