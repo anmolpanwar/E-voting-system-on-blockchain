@@ -25,5 +25,49 @@ An E-voting system based on blockchain, build from scratch.
  For a practical scenario - the length of the output hash of a SHA256 algorithm is 256 bits. The bitcoin protocol (by default) dictates that the hash for each block must begin with AT LEAST 30 zeroes (however, that number of zeros is regularly scaled up or down so that mining a new block takes about 10 minutes on an average). This means we have to check AT MOST 2^30 possible outcomes and an AVERAGE of 2^29 outcomes to output the desired hash.
  This probability is close to 1 in a Billion and for an average computer, this would take several minutes to compute but the devices that are especially designed to compute hashes and nothing else can increase the efficiency greatly and thus all the miners collectively maintain an average time of 10 minutes. Those devices are known as ASIC (Application Specific Integrated Circuits) device. They consume a large amount of power and thus PoW is a very power hungry consensus algorithm.
 
-Blockchain really is a miraculous technology but still there are reasons that steer it away from widespread adoption. To know more...
-Refer to my article - https://medium.com/@anmolpanwar8/heres-why-blockchain-is-not-yet-ready-to-gain-traction-ac92c323d84d
+Blockchain really is a miraculous technology but still there are reasons that steer it away from widespread adoption. To know more, refer to my article @ medium
+#### Here - https://medium.com/@anmolpanwar8/heres-why-blockchain-is-not-yet-ready-to-gain-traction-ac92c323d84d  
+
+
+**Directory structure for the project**  
+| - - **\<Project folder name\>/**  
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - `blockchain.py`  
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - `enc.py`  
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - `aes.py`<br>
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - `broadcast.py`  
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - `jsonify.py`  
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - `verification.py`  
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - `takeyourkeyhome.py`  
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - `listener.py`  
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - `election_results.py`  
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - `bar_chart.py`  
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - **templates/**  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `vote.html`  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `oops.html`  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `home.html`  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `thanks.html`  
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - **static/**  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `shhhhhh.JPG`  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `cong.png`  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `image.png`  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `nota.png`  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - **styles/**  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `style.css`  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `10.jpeg`  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `vote.css`  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `cong.png`  
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | - - `image.png`  
+| &nbsp;&nbsp;&nbsp;&nbsp; | - - **temp/**  
+<br>
+<br>
+**Steps to run the application:**  
+* Install the necesaary libraries  
+* Change the IP address (and port number, optional) to your computer's IP in `listener.py`<br>
+* Run `listener.py`<br>
+* Run `blockchain.py`  
+* The files in **temp/** will be created automatically  
+* Open `localhost:<port number>`
+* Sign up as voter
+* Choose a candidate
+* Repeat
+* Watch the blockchain developing behind the scenes
