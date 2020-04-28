@@ -76,3 +76,9 @@ Blockchain really is a miraculous technology but still there are reasons that st
 * Choose a candidate
 * Repeat
 * Watch the blockchain developing behind the scenes
+<br>
+<br>
+<br>
+
+## message = "Thank You" 
+## print(message, end = ' ')
