@@ -65,7 +65,7 @@ Similarly the data gets accumulated in the temporary pool by other peers as well
 | &nbsp;&nbsp;&nbsp;&nbsp; | - - **temp/**  
 <br>
 <br>
-**Steps to run the application:**  
+**Steps to run the application program:**  
 * Install the necesaary libraries  
 * Change the IP address (and port number, optional) to your computer's IP in `listener.py`<br>
 * Run `listener.py`<br>
