@@ -82,4 +82,4 @@ Similarly the data gets accumulated in the temporary pool by other peers as well
 
 ## hidden_msg = [84, 104, 97, 110, 107, 32, 89, 111, 117]
 ## decrypt = [chr(i) for i in hidden_msg]
-## print(''.join(decrypt))
+## print(' '.join(decrypt))
