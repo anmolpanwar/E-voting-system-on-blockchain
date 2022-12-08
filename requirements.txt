@@ -2,7 +2,7 @@ altgraph==0.10.2
 asn1crypto==0.24.0
 bdist-mpkg==0.5.0
 bonjour-py==0.3
-certifi==2019.9.11
+certifi==2022.12.7
 cffi==1.12.2
 chardet==3.0.4
 Click==7.0
